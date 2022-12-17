@@ -7,8 +7,19 @@
   h1 {
     @apply font-aviano text-4xl font-thin ;
   }
+  h2 {
+    @apply font-aviano text-lg font-thin ;
+
+    /* @apply font-krete text-lg font-normal text-white text-opacity-90; */
+  }
+  h3 {
+    @apply font-aviano text-3xl font-thin;
+  }
   p {
     @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose;
+  }
+  label {
+    @apply font-krete text-xl font-normal text-white text-opacity-90;
   }
 }
 
@@ -35,12 +46,14 @@ a {
 
 .content-border::-webkit-scrollbar-track {
   background: white;
+  border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
 
 .content-border::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 5px white;
   background: #1A1A1D;
+  border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
 
