@@ -1,62 +1,52 @@
-import { motion, Variants } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: {
-    height: 0,
-    overflowY: "hidden",
-  },
-  visible: {
-    height: "100%",
-    transition: { duration: 0.5, when: "beforeChildren" },
-    transitionEnd: { overflowY: "auto" },
-  },
-};
-
-const contentVariants: Variants = {
-  hidden: {
-    opacity: 1,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      staggerChildren: 0.006,
-    },
-  },
-};
-
-const letterVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
+import { motion } from "framer-motion";
+import Image from "next/image";
+import languages from "../data/languages.json";
+import Marquee from "react-fast-marquee";
 
 const SkillsContent = () => {
-  const text1 = `Skills`;
+  const skills = [
+    {
+      category: "languages",
+      list: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "PHP",
+        "SQL",
+        "NoSQL",
+        "Python",
+        "Java",
+        "C#",
+        "C++",
+      ],
+    },
+    {
+      category: "tools/technologies",
+      list: ["Node.js", "MySQL", "MongoDB", "Git", "GitHub", "Android Studio"],
+    },
+    {
+      category: "frameworks",
+      list: ["React.js", "Next.js", "Vue.js", "Express.js", "Laravel"],
+    },
+  ];
 
   return (
-    <motion.div
-      className="content-border border rounded-lg rounded-t-none p-4 w-full h-full overflow-y-auto"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.p
-        variants={contentVariants}
-        className="tracking-widest text-justify"
-      >
-        {text1.split("").map((char, index) => (
-          <motion.span key={char + "-" + index} variants={letterVariants}>
-            {char}
-          </motion.span>
+    <>
+      <div className="flex flex-col justify-around h-full">
+        {skills.map(({ category, list }) => (
+          <div className="">
+            <h2>{category}</h2>
+            <div className="">
+              {list.map((item, index, list) => {
+                const divider = index + 1 === list.length ? "" : " | ";
+                return <label>{item + divider}</label>;
+              })}
+            </div>
+          </div>
         ))}
-      </motion.p>
-    </motion.div>
+      </div>
+    </>
   );
 };
 
