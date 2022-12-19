@@ -1,6 +1,5 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import languages from "../data/languages.json";
 import Marquee from "react-fast-marquee";
 import {
   containerVariants,
