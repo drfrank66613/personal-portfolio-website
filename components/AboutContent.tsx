@@ -36,7 +36,6 @@ const AboutContent = () => {
           variants={contentVariants}
           // initial="hidden"
           // animate={animation}
-          className="tracking-widest text-justify"
         >
           {text1.split("").map((char, index) => (
             <motion.span key={char + "-" + index} variants={letterVariants}>
