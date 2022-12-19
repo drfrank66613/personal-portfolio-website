@@ -3,20 +3,19 @@ import { Variants } from "framer-motion";
 export const containerVariants: Variants = {
   hidden: {
     height: 0,
-    overflowY: "hidden",
+    overflow: "hidden",
   },
   visible: {
     height: "100%",
     transition: {
-      delay: 0.1,
       duration: 0.5,
       when: "beforeChildren",
     },
-    transitionEnd: { overflowY: "auto" },
+    transitionEnd: { overflow: "auto" },
   },
   exit: {
     height: 0,
-    overflowY: "hidden",
+    overflow: "hidden",
     transition: { duration: 0.5 },
   },
 };
@@ -30,6 +29,21 @@ export const contentVariants: Variants = {
     transition: {
       delay: 0.5,
       staggerChildren: 0.006,
+    },
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
+export const contactContentVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
     },
   },
   exit: {
