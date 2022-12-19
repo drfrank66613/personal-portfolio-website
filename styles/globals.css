@@ -9,17 +9,45 @@
   }
   h2 {
     @apply font-aviano text-lg font-thin ;
-
-    /* @apply font-krete text-lg font-normal text-white text-opacity-90; */
   }
   h3 {
     @apply font-aviano text-3xl font-thin;
   }
   p {
-    @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose;
+    @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify;
   }
   label {
-    @apply font-krete text-xl font-normal text-white text-opacity-90;
+    @apply font-krete text-xs font-normal text-white text-opacity-90;
+  }
+  input, textarea {
+    @apply font-krete text-sm font-thin tracking-widest px-1 h-7 bg-transparent border-b rounded-b-md outline-none
+  }
+  textarea {
+    @apply h-24 resize-none
+  }
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    @apply text-neutral-500
+  }
+  input:-moz-placeholder, textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    @apply text-neutral-500 opacity-100
+  }
+  input::-moz-placeholder, textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    @apply text-neutral-500 opacity-100
+  }
+  input:-ms-input-placeholder, textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    @apply text-neutral-500
+  }
+  input::-ms-input-placeholder, textarea::-ms-input-placeholder { /* Microsoft Edge */
+    @apply text-neutral-500
+  }
+  input::placeholder, textarea::placeholder { /* Most modern browsers support this now. */
+    @apply text-neutral-500
+  }
+}
+
+@layer components {
+  .skills-list {
+    @apply font-krete text-xl font-normal text-white text-opacity-90 tracking-widest;
   }
 }
 
@@ -65,4 +93,11 @@ a {
     color: white;
     background: #1A1A1D;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #1A1A1D inset;
 }
