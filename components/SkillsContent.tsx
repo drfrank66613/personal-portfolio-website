@@ -1,7 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import languages from "../data/languages.json";
 import Marquee from "react-fast-marquee";
+import {
+  containerVariants,
+  contentVariants,
+  letterVariants,
+} from "../utils/variants";
 
 const SkillsContent = () => {
   const skills = [
@@ -33,19 +38,22 @@ const SkillsContent = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-around h-full">
+      <motion.div
+        variants={contentVariants}
+        className="flex flex-col justify-around h-full"
+      >
         {skills.map(({ category, list }) => (
           <div className="">
             <h2>{category}</h2>
             <div className="">
               {list.map((item, index, list) => {
                 const divider = index + 1 === list.length ? "" : " | ";
-                return <label>{item + divider}</label>;
+                return <label className="skills-list">{item + divider}</label>;
               })}
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
     </>
   );
 };
