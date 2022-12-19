@@ -5,7 +5,6 @@ import {
   contentVariants,
   letterVariants,
 } from "../utils/variants";
-import CustomInput from "./CustomInput";
 
 const ContactContent = () => {
   return (
