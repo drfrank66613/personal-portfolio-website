@@ -16,11 +16,11 @@
   p {
     @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify;
   }
-  label {
-    @apply font-krete text-xs font-normal text-white text-opacity-90;
+  button {
+    @apply font-krete text-sm font-normal text-white text-opacity-90 tracking-widest
   }
   input, textarea {
-    @apply font-krete text-sm font-thin tracking-widest px-1 h-7 bg-transparent border-b rounded-b-md outline-none
+    @apply font-krete text-sm font-thin text-white text-opacity-90 tracking-widest px-1 h-7 bg-transparent border rounded-sm outline-none
   }
   textarea {
     @apply h-24 resize-none
