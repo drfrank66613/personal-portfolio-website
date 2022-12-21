@@ -23,7 +23,7 @@
     @apply font-krete text-sm font-thin text-white text-opacity-90 tracking-widest px-1 h-7 bg-transparent border rounded-sm outline-none
   }
   textarea {
-    @apply h-24 resize-none
+    @apply pt-1 h-24 resize-none
   }
   input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     @apply text-neutral-500
