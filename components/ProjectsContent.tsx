@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, MouseEvent } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import ProjectThumb from "./ProjectThumb";
 
 const ProjectsContent = () => {
   const scroller = useRef<HTMLDivElement>(null);
@@ -8,6 +9,18 @@ const ProjectsContent = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [overflow, setOverflow] = useState<number>(0);
   const [mapPosition, setMapPosition] = useState<Function>(Function);
+
+  const projectThumbs = [
+    {
+      src: "/hotel-management-system.png",
+      alt: "Hotel Management System",
+    },
+    {
+      src: "/the-generations-site.png",
+      alt: "The Generations Site",
+    },
+    { src: "/dyslexia-site.png", alt: "Dyslexia Site" },
+  ];
 
   const onResize = () => {
     setWindowWidth(window.innerWidth);
@@ -28,6 +41,9 @@ const ProjectsContent = () => {
         x: mapPosition(x),
       });
 
+      // console.log(contentWidth);
+      // console.log(windowWidth);
+
       return;
     }
 
@@ -47,9 +63,9 @@ const ProjectsContent = () => {
       gsap.utils.mapRange(0, windowWidth, overflow / 2, overflow / -2)
     );
 
-    console.log("windowWidth", windowWidth);
-    console.log("contentWidth", contentWidth);
-    console.log("overflow", overflow);
+    // console.log("windowWidth", windowWidth);
+    // console.log("contentWidth", contentWidth);
+    // console.log("overflow", overflow);
 
     window.addEventListener("resize", onResize);
 
@@ -57,8 +73,6 @@ const ProjectsContent = () => {
       window.removeEventListener("resize", onResize);
     };
   }, [windowWidth, contentWidth, overflow]);
-
-  console.log(overflow);
 
   return (
     <div
@@ -69,32 +83,10 @@ const ProjectsContent = () => {
         <div
           className="flex justify-center items-center text-black h-full"
           ref={scroller}
-          onMouseEnter={(e) => console.log(e.clientX)}
         >
-          <div className="mx-1 relative h-full w-[600px] border rounded-lg grayscale hover:grayscale-0">
-            <Image
-              src="/hotel-management-system.png"
-              alt="Hotel Management System"
-              fill
-              style={{ borderRadius: "0.5rem" }}
-            />
-          </div>
-          <div className="mx-1 relative h-full w-[600px] border rounded-lg grayscale hover:grayscale-0">
-            <Image
-              src="/the-generations-site.png"
-              alt="The Generations Site"
-              fill
-              style={{ borderRadius: "0.5rem" }}
-            />
-          </div>
-          <div className="mx-1 relative h-full w-[600px] border rounded-lg grayscale hover:grayscale-0">
-            <Image
-              src="/dyslexia-site.png"
-              alt="Dyslexia Site"
-              fill
-              style={{ borderRadius: "0.5rem" }}
-            />
-          </div>
+          {projectThumbs.map(({ src, alt }, index) => (
+            <ProjectThumb key={index} src={src} alt={alt} />
+          ))}
         </div>
       </div>
     </div>
