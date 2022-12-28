@@ -1,7 +1,6 @@
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import {
   containerVariants,
-  contactContentVariants,
   contentVariants,
   letterVariants,
 } from "../utils/variants";
@@ -63,7 +62,7 @@ const ContactContent = () => {
       />
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
-        variants={contactContentVariants}
+        variants={contentVariants}
         className="h-full flex space-x-5 relative py-4"
       >
         <div className="w-[90%] flex flex-col justify-between">
