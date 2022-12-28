@@ -4,6 +4,7 @@ import {
   containerVariants,
   contentVariants,
   letterVariants,
+  textRevealVariants,
 } from "../utils/variants";
 
 const AboutContent = () => {
@@ -33,7 +34,7 @@ const AboutContent = () => {
       // exit="exit"
       >
         <motion.p
-          variants={contentVariants}
+          variants={textRevealVariants}
           // initial="hidden"
           // animate={animation}
         >
