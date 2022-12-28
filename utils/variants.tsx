@@ -20,7 +20,7 @@ export const containerVariants: Variants = {
   },
 };
 
-export const contentVariants: Variants = {
+export const textRevealVariants: Variants = {
   hidden: {
     opacity: 1,
   },
@@ -36,15 +36,12 @@ export const contentVariants: Variants = {
   },
 };
 
-export const contactContentVariants: Variants = {
+export const contentVariants: Variants = {
   hidden: {
     opacity: 0,
   },
   visible: {
     opacity: 1,
-    transition: {
-      duration: 0.4,
-    },
   },
   exit: {
     opacity: 0,
