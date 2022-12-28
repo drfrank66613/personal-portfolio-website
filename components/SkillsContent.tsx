@@ -42,12 +42,16 @@ const SkillsContent = () => {
         className="flex flex-col justify-between h-full"
       >
         {skills.map(({ category, list }) => (
-          <div className="">
+          <div key={category}>
             <h2>{category}</h2>
-            <div className="">
+            <div>
               {list.map((item, index, list) => {
                 const divider = index + 1 === list.length ? "" : " | ";
-                return <label className="skills-list">{item + divider}</label>;
+                return (
+                  <label key={item} className="skills-list">
+                    {item + divider}
+                  </label>
+                );
               })}
             </div>
           </div>
