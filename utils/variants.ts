@@ -6,7 +6,7 @@ export const containerVariants: Variants = {
     overflow: "hidden",
   },
   visible: {
-    height: "100%",
+    height: "auto",
     transition: {
       duration: 0.5,
       when: "beforeChildren",
