@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, MouseEvent } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import ProjectThumb from "./ProjectThumb";
+import { Projects } from "../data/projects";
 
 const ProjectsContent = () => {
   const scroller = useRef<HTMLDivElement>(null);
@@ -9,18 +10,6 @@ const ProjectsContent = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [overflow, setOverflow] = useState<number>(0);
   const [mapPosition, setMapPosition] = useState<Function>(Function);
-
-  const projectThumbs = [
-    {
-      src: "/hotel-management-system.png",
-      alt: "Hotel Management System",
-    },
-    {
-      src: "/the-generations-site.png",
-      alt: "The Generations Site",
-    },
-    { src: "/dyslexia-site.png", alt: "Dyslexia Site" },
-  ];
 
   const onResize = () => {
     setWindowWidth(window.innerWidth);
@@ -84,8 +73,8 @@ const ProjectsContent = () => {
           className="flex justify-center items-center text-black h-full"
           ref={scroller}
         >
-          {projectThumbs.map(({ src, alt }, index) => (
-            <ProjectThumb key={index} src={src} alt={alt} />
+          {Projects.map(({ id, name }, index) => (
+            <ProjectThumb key={index} src={`/${id}.png`} alt={name} id={id} />
           ))}
         </div>
       </div>
