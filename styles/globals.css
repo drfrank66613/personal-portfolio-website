@@ -16,6 +16,9 @@
   p {
     @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify;
   }
+  ul {
+    @apply list-disc list-inside font-krete text-sm font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify
+  }
   button {
     @apply font-krete text-sm font-normal text-white text-opacity-90 tracking-widest
   }
@@ -91,7 +94,9 @@ a {
   }
   body {
     color: white;
-    background: #1A1A1D;
+    background: #0f0f0f;
+    /* background: #1A1A1D; */
+    
   }
 }
 
