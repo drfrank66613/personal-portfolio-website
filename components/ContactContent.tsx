@@ -44,7 +44,7 @@ const ContactContent = () => {
   };
 
   return (
-    <div className="relative h-full">
+    <div className="relative">
       <Toaster
         containerStyle={{
           top: 0,
@@ -63,9 +63,9 @@ const ContactContent = () => {
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
         variants={contentVariants}
-        className="h-full flex space-x-5 relative py-4"
+        className="h-full flex space-x-3 relative py-4"
       >
-        <div className="w-[90%] flex flex-col justify-between">
+        <div className="w-[90%] flex flex-col space-y-3">
           <input
             {...register("name")}
             required
