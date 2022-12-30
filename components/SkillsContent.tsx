@@ -39,7 +39,7 @@ const SkillsContent = () => {
     <>
       <motion.div
         variants={contentVariants}
-        className="flex flex-col justify-between h-full"
+        className="flex flex-col space-y-3"
       >
         {skills.map(({ category, list }) => (
           <div key={category}>
