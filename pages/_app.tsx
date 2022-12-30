@@ -88,14 +88,16 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             </nav>
             <AnimatePresence mode="wait">
               <motion.article
-                className={`content-border h-full px-5 py-4 border ${borderTopStyle} rounded-lg overflow-auto`}
+                className={`content-border border ${borderTopStyle} rounded-lg overflow-auto`}
                 key={currentPath}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
               >
-                <Component {...pageProps} />
+                <div className="px-5 py-4">
+                  <Component {...pageProps} />
+                </div>
               </motion.article>
             </AnimatePresence>
           </section>
