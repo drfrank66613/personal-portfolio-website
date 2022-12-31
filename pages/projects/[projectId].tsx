@@ -52,16 +52,19 @@ const ProjectDetails: NextPageWithLayout = () => {
             </div>
           </header>
 
-          <main className="h-[90%] flex space-x-20">
+          <main className="h-[90%] flex space-x-10">
             <section className="w-[60%] flex items-center">
-              <div className="max-h-full overflow-auto">
+              <div className="max-h-[75%] overflow-auto pr-3">
                 <h1>{currentProject.name}</h1>
                 <div>
                   {currentProject.skills.map((skill, index, skills) => {
                     const divider = index + 1 === skills.length ? "" : " | ";
 
                     return (
-                      <label key={skill} className="skills-list text-sm">
+                      <label
+                        key={skill}
+                        className="skills-list text-sm text-neutral-400"
+                      >
                         {skill + divider}
                       </label>
                     );
@@ -70,10 +73,7 @@ const ProjectDetails: NextPageWithLayout = () => {
                 <div className="mt-3">
                   {currentProject.content.initial}
                   {isContentExpanded ? currentProject.content.full : null}
-                  <span
-                    onClick={toggleExpanded}
-                    className="text-sm text-neutral-300 tracking-widest cursor-pointer"
-                  >
+                  <span onClick={toggleExpanded} className="more-less-text">
                     {isContentExpanded ? "Show less" : "...Read more"}
                   </span>
                 </div>
