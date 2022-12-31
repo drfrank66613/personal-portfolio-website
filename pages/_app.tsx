@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                         ease: "easeOut",
                       }}
                       layoutId="border"
-                      className="absolute inset-0 -bottom-[1px] border border-b-[#1A1A1D] rounded-t-lg z-0"
+                      className="absolute inset-0 -bottom-[1px] border border-b-[#0f0f0f] rounded-t-lg z-0"
                     />
                   ) : null}
                 </div>
