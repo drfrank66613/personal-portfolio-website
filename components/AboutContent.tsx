@@ -13,7 +13,7 @@ const AboutContent = () => {
   const text1 = `I am George Kennedy, a software engineer who loves to create new things
   and solve day-to-day problems with the help of technology.`;
 
-  const text2 = `Proficient in using HTML/CSS, JavaScript, React, Node/Express for
+  const text2 = `Proficient in using HTML/CSS, JavaScript/TypeScript, React/Next.js, Node/Express.js for
   building Full-Stack Web App. Having basic skills in AI (Python,
     Tensorflow), IoT (Raspberry Pi - Python, Arduino - C++), Mobile App
     Development (Android Studio - Java).`;
