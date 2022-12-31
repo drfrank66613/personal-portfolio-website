@@ -54,7 +54,7 @@ const ProjectDetails: NextPageWithLayout = () => {
 
           <main className="h-[90%] flex space-x-10">
             <section className="w-[60%] flex items-center">
-              <div className="max-h-[75%] overflow-auto pr-3">
+              <div className="content-border max-h-[75%] overflow-auto pr-3">
                 <h1>{currentProject.name}</h1>
                 <div>
                   {currentProject.skills.map((skill, index, skills) => {
