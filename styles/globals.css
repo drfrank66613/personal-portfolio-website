@@ -88,8 +88,8 @@ a {
 }
 
 .content-border::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 5px white;
-  background: #1A1A1D;
+  box-shadow: inset 0 0 3px white;
+  background: #0f0f0f;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
