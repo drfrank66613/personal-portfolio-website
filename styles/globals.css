@@ -5,25 +5,28 @@
 
 @layer base {
   h1 {
-    @apply font-aviano text-4xl font-thin ;
+    @apply font-aviano text-4xl font-thin;
   }
   h2 {
-    @apply font-aviano text-lg font-thin ;
+    @apply font-aviano text-lg font-thin;
+  }
+  h3,p,ul,button,input,textarea {
+    @apply font-krete font-normal text-white text-opacity-90 tracking-widest;
   }
   h3 {
-    @apply font-aviano text-3xl font-thin;
+    @apply text-sm leading-loose underline underline-offset-4;
   }
   p {
-    @apply font-krete text-lg font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify;
+    @apply text-lg leading-loose text-justify;
   }
   ul {
-    @apply list-disc list-inside font-krete text-sm font-normal text-white text-opacity-90 leading-loose tracking-widest text-justify
+    @apply list-disc list-outside pl-4 text-sm leading-loose text-justify;
   }
   button {
-    @apply font-krete text-sm font-normal text-white text-opacity-90 tracking-widest
+    @apply text-sm;
   }
   input, textarea {
-    @apply font-krete text-sm font-thin text-white text-opacity-90 tracking-widest px-1 h-7 bg-transparent border rounded-sm outline-none
+    @apply text-sm font-thin text-opacity-90 px-1 h-7 bg-transparent border rounded-sm outline-none
   }
   textarea {
     @apply pt-1 h-24 resize-none
@@ -51,6 +54,9 @@
 @layer components {
   .skills-list {
     @apply font-krete text-xl font-normal text-white text-opacity-90 tracking-widest;
+  }
+  .more-less-text {
+    @apply text-sm text-neutral-300 tracking-widest cursor-pointer
   }
 }
 
