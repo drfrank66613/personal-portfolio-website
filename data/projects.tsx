@@ -28,8 +28,8 @@ export const Projects: Projects = [
     ],
     gallery: [
       "/hotel-management-system.png",
-      "/hotel-management-system.png",
-      "/hotel-management-system.png",
+      "/hms-reservation.png",
+      "/hms-rooms-management.png",
     ],
     content: {
       initial: (
@@ -108,8 +108,8 @@ export const Projects: Projects = [
     skills: ["HTML", "CSS", "JavaScript", "React.js", "TailwindCSS"],
     gallery: [
       "/the-generations-site.png",
-      "/the-generations-site.png",
-      "/the-generations-site.png",
+      "/tgs-featured-guests.png",
+      "/tgs-footer.png",
     ],
     content: {
       initial: (
@@ -207,7 +207,7 @@ export const Projects: Projects = [
           <br />
           <p className="text-xs leading-relaxed">
             Note: The application is bound to a Non Disclosure Agreement with
-            Research Innovation and Enterprise Centre (RIEC), hence only several
+            Research Innovation and Enterprise Centre (RIEC), hence only
             screenshots of features that I've applied are displayed here
           </p>
         </article>
