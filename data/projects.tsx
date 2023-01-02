@@ -4,7 +4,10 @@ type Projects = {
   id: string;
   name: string;
   skills: string[];
-  gallery: string[];
+  gallery: {
+    src: string;
+    alt: string;
+  }[];
   content: {
     initial: ReactNode;
     full: ReactNode;
@@ -27,9 +30,18 @@ export const Projects: Projects = [
       "Redux",
     ],
     gallery: [
-      "/hotel-management-system.png",
-      "/hms-reservation.png",
-      "/hms-rooms-management.png",
+      {
+        src: "/hotel-management-system.png",
+        alt: "Hotel Management System Thumbnail",
+      },
+      {
+        src: "/hms-reservation.png",
+        alt: "Hotel Management System - Reservation Thumbnail",
+      },
+      {
+        src: "/hms-rooms-management.png",
+        alt: "Hotel Management System - Rooms Management Thumbnail",
+      },
     ],
     content: {
       initial: (
@@ -107,9 +119,15 @@ export const Projects: Projects = [
     name: "The Generations Site",
     skills: ["HTML", "CSS", "JavaScript", "React.js", "TailwindCSS"],
     gallery: [
-      "/the-generations-site.png",
-      "/tgs-featured-guests.png",
-      "/tgs-footer.png",
+      {
+        src: "/the-generations-site.png",
+        alt: "The Generation Site Thumbnail",
+      },
+      {
+        src: "/tgs-featured-guests.png",
+        alt: "The Generation Site - Featured Guests Thumbnail",
+      },
+      { src: "/tgs-footer.png", alt: "The Generation Site - Footer Thumbnail" },
     ],
     content: {
       initial: (
@@ -161,7 +179,11 @@ export const Projects: Projects = [
       "Laravel",
       "TailwindCSS",
     ],
-    gallery: ["/dyslexia-site.png", "/dyslexia-site.png", "/dyslexia-site.png"],
+    gallery: [
+      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+    ],
     content: {
       initial: (
         <article>
