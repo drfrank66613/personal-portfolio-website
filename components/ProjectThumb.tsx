@@ -24,14 +24,12 @@ const ProjectThumb = ({ src, alt, id }: ProjectThumbsProps) => {
     <div
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
-      className="mx-1 relative h-full w-[600px] border rounded-lg grayscale hover:grayscale-0 cursor-pointer"
+      className="mx-1 relative h-full w-[600px] border rounded-lg cursor-pointer"
       onClick={handleClick}
     >
       {isActive && (
-        <div className="absolute bg-transparent flex justify-center items-center h-full w-full z-10">
-          <h2 className="bg-neutral-900 bg-opacity-80 text-white px-2 py-1 rounded-lg">
-            {alt}
-          </h2>
+        <div className="absolute bg-neutral-900 rounded-lg bg-opacity-90 flex justify-center items-center h-full w-full z-10">
+          <h2 className="text-white px-2 py-1 rounded-lg">{alt}</h2>
         </div>
       )}
 
