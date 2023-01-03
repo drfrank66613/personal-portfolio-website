@@ -10,7 +10,7 @@
   h2 {
     @apply font-aviano text-lg font-thin;
   }
-  h3,p,ul,button,input,textarea {
+  h3,p,ul,input,textarea {
     @apply font-krete font-normal text-white text-opacity-90 tracking-widest;
   }
   h3 {
@@ -21,9 +21,6 @@
   }
   ul {
     @apply list-disc list-outside pl-4 text-sm leading-loose text-justify;
-  }
-  button {
-    @apply text-sm;
   }
   input, textarea {
     @apply text-sm font-thin text-opacity-90 px-1 h-7 bg-transparent border rounded-sm outline-none
