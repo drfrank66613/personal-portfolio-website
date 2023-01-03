@@ -58,13 +58,13 @@ const ProjectDetails: NextPageWithLayout = () => {
       {currentProject && (
         <div className="h-screen px-11 py-7 flex flex-col">
           <header>
-            <div
+            <button
               className="flex items-center space-x-2 cursor-pointer"
               onClick={backToMain}
             >
               <RiHome2Line size={20} />
               <h2>Back To Main</h2>
-            </div>
+            </button>
           </header>
 
           <main className="h-[90%] flex space-x-10">
@@ -88,9 +88,9 @@ const ProjectDetails: NextPageWithLayout = () => {
                 <div className="mt-3">
                   {currentProject.content.initial}
                   {isContentExpanded ? currentProject.content.full : null}
-                  <span onClick={toggleExpanded} className="more-less-text">
+                  <button onClick={toggleExpanded} className="more-less-text">
                     {isContentExpanded ? "Show less" : "...Read more"}
-                  </span>
+                  </button>
                 </div>
               </div>
             </section>
@@ -115,25 +115,25 @@ const ProjectDetails: NextPageWithLayout = () => {
           </main>
           <footer className="flex justify-between">
             {prevProject ? (
-              <div
+              <button
                 className="flex items-center space-x-2 cursor-pointer"
                 onClick={() => toOtherProject(prevProject.id)}
               >
                 <BiLeftArrow size={20} />
                 <h2>{prevProject.name}</h2>
-              </div>
+              </button>
             ) : (
               <div></div>
             )}
 
             {nextProject ? (
-              <div
+              <button
                 className="flex items-center space-x-2 cursor-pointer"
                 onClick={() => toOtherProject(nextProject.id)}
               >
                 <h2>{nextProject.name}</h2>
                 <BiRightArrow size={20} />
-              </div>
+              </button>
             ) : (
               <div></div>
             )}
