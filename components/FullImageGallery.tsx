@@ -29,14 +29,14 @@ const FullImageGallery = ({
   };
 
   return (
-    <div className="inset-0  fixed h-screen w-screen z-10 bg-neutral-900 bg-opacity-95 flex justify-evenly items-center">
+    <div className="inset-0 fixed h-screen w-screen z-10 bg-neutral-900 bg-opacity-95 flex justify-evenly items-center">
       {prevImage ? (
-        <div
+        <button
           className="cursor-pointer bg-black p-2 rounded-lg"
           onClick={() => changeImage(prevImage)}
         >
           <AiOutlineLeft size={20} />
-        </div>
+        </button>
       ) : (
         <div className="invisible p-2">
           <AiOutlineLeft size={20} />
@@ -53,24 +53,24 @@ const FullImageGallery = ({
       </div>
 
       {nextImage ? (
-        <div
+        <button
           className="cursor-pointer bg-black p-2 rounded-lg"
           onClick={() => changeImage(nextImage)}
         >
           <AiOutlineRight size={20} />
-        </div>
+        </button>
       ) : (
         <div className="invisible p-2">
           <AiOutlineRight size={20} />
         </div>
       )}
 
-      <div
+      <button
         onClick={closeImage}
         className="absolute top-[3%] right-[1.5%] cursor-pointer"
       >
         <AiOutlineClose size={20} />
-      </div>
+      </button>
     </div>
   );
 };
