@@ -7,16 +7,13 @@ import { Projects } from "../../data/projects";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import GalleryThumb from "../../components/GalleryThumb";
-
-type Gallery = {
-  src: string;
-  alt: string;
-};
+import FullImageGallery from "../../components/FullImageGallery";
+import type { ImageGallery } from "../../data/projects";
 
 const ProjectDetails: NextPageWithLayout = () => {
   const router = useRouter();
   const [isContentExpanded, setIsContentExpanded] = useState<boolean>(false);
-  const [viewedImage, setViewedImage] = useState<Gallery | null>(null);
+  const [viewedImage, setViewedImage] = useState<ImageGallery | null>(null);
   const [isFullImage, setIsFullImage] = useState<boolean>(false);
 
   const currentProject = Projects.find(
@@ -43,7 +40,7 @@ const ProjectDetails: NextPageWithLayout = () => {
     setIsContentExpanded((prev) => !prev);
   };
 
-  const viewImage = (image: Gallery) => {
+  const viewImage = (image: ImageGallery) => {
     setViewedImage(image);
     setIsFullImage(true);
   };
@@ -99,30 +96,19 @@ const ProjectDetails: NextPageWithLayout = () => {
             </section>
             <section className="w-[40%] py-20">
               <div className="grid grid-cols-2 grid-rows-3 gap-1 h-full">
-                {currentProject.gallery.map((gallery, index) => (
+                {currentProject.gallery.map((image, index) => (
                   <GalleryThumb
                     index={index}
-                    gallery={gallery}
+                    image={image}
                     viewImage={viewImage}
                   />
                 ))}
                 {viewedImage && isFullImage && (
-                  <div className="inset-0 fixed h-screen w-screen z-10 bg-black bg-opacity-90 flex justify-center items-center">
-                    <div className="relative w-[90%] h-full">
-                      <Image
-                        src={viewedImage.src}
-                        alt={viewedImage.alt}
-                        fill
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                    <div
-                      onClick={closeImage}
-                      className="absolute top-[3%] right-[1.5%] cursor-pointer"
-                    >
-                      <AiOutlineClose size={20} />
-                    </div>
-                  </div>
+                  <FullImageGallery
+                    gallery={currentProject.gallery}
+                    viewedImage={viewedImage}
+                    closeImage={closeImage}
+                  />
                 )}
               </div>
             </section>
