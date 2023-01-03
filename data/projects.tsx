@@ -1,13 +1,16 @@
 import { ReactNode } from "react";
 
+export type ImageGallery = {
+  id: string;
+  src: string;
+  alt: string;
+};
+
 type Projects = {
   id: string;
   name: string;
   skills: string[];
-  gallery: {
-    src: string;
-    alt: string;
-  }[];
+  gallery: ImageGallery[];
   content: {
     initial: ReactNode;
     full: ReactNode;
@@ -31,14 +34,17 @@ export const Projects: Projects = [
     ],
     gallery: [
       {
+        id: "hms",
         src: "/hotel-management-system.png",
         alt: "Hotel Management System Thumbnail",
       },
       {
+        id: "hms-reservation",
         src: "/hms-reservation.png",
         alt: "Hotel Management System - Reservation Thumbnail",
       },
       {
+        id: "hms-rooms-management",
         src: "/hms-rooms-management.png",
         alt: "Hotel Management System - Rooms Management Thumbnail",
       },
@@ -120,14 +126,20 @@ export const Projects: Projects = [
     skills: ["HTML", "CSS", "JavaScript", "React.js", "TailwindCSS"],
     gallery: [
       {
+        id: "tgs",
         src: "/the-generations-site.png",
         alt: "The Generation Site Thumbnail",
       },
       {
+        id: "tgs-featured-guests",
         src: "/tgs-featured-guests.png",
         alt: "The Generation Site - Featured Guests Thumbnail",
       },
-      { src: "/tgs-footer.png", alt: "The Generation Site - Footer Thumbnail" },
+      {
+        id: "tgs-footer",
+        src: "/tgs-footer.png",
+        alt: "The Generation Site - Footer Thumbnail",
+      },
     ],
     content: {
       initial: (
@@ -180,9 +192,9 @@ export const Projects: Projects = [
       "TailwindCSS",
     ],
     gallery: [
-      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
-      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
-      { src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { id: "ds1", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { id: "ds2", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { id: "ds3", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
     ],
     content: {
       initial: (
