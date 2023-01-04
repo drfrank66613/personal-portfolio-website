@@ -9,12 +9,13 @@ import Image from "next/image";
 import GalleryThumb from "../../components/GalleryThumb";
 import FullImageGallery from "../../components/FullImageGallery";
 import type { ImageGallery } from "../../data/projects";
+import GalleryLayout from "../../components/GalleryLayout";
 
 const ProjectDetails: NextPageWithLayout = () => {
   const router = useRouter();
   const [isContentExpanded, setIsContentExpanded] = useState<boolean>(false);
   const [viewedImage, setViewedImage] = useState<ImageGallery | null>(null);
-  const [isFullImage, setIsFullImage] = useState<boolean>(false);
+  const [isFullImageOpen, setIsFullImageOpen] = useState<boolean>(false);
 
   const currentProject = Projects.find(
     (project) => project.id === router.query.projectId
@@ -42,11 +43,12 @@ const ProjectDetails: NextPageWithLayout = () => {
 
   const viewImage = (image: ImageGallery) => {
     setViewedImage(image);
-    setIsFullImage(true);
+    setIsFullImageOpen(true);
   };
 
   const closeImage = () => {
-    setIsFullImage(false);
+    setViewedImage(null);
+    setIsFullImageOpen(false);
   };
 
   useEffect(() => {
@@ -95,22 +97,17 @@ const ProjectDetails: NextPageWithLayout = () => {
               </div>
             </section>
             <section className="w-[40%] py-20">
-              <div className="grid grid-cols-2 grid-rows-3 gap-1 h-full">
-                {currentProject.gallery.map((image, index) => (
-                  <GalleryThumb
-                    index={index}
-                    image={image}
-                    viewImage={viewImage}
-                  />
-                ))}
-                {viewedImage && isFullImage && (
-                  <FullImageGallery
-                    gallery={currentProject.gallery}
-                    viewedImage={viewedImage}
-                    closeImage={closeImage}
-                  />
-                )}
-              </div>
+              <GalleryLayout
+                gallery={currentProject.gallery}
+                viewImage={viewImage}
+              />
+
+              <FullImageGallery
+                isOpen={isFullImageOpen}
+                gallery={currentProject.gallery}
+                viewedImage={viewedImage}
+                closeImage={closeImage}
+              />
             </section>
           </main>
           <footer className="flex justify-between">
