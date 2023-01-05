@@ -3,12 +3,11 @@ import { useState } from "react";
 import type { ImageGallery } from "../data/projects";
 
 type GalleryThumbProps = {
-  index: number;
   image: ImageGallery;
   viewImage: (image: ImageGallery) => void;
 };
 
-const GalleryThumb = ({ index, image, viewImage }: GalleryThumbProps) => {
+const GalleryThumb = ({ image, viewImage }: GalleryThumbProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleActive = () => {
@@ -20,11 +19,7 @@ const GalleryThumb = ({ index, image, viewImage }: GalleryThumbProps) => {
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
       onClick={() => viewImage(image)}
-      className={
-        index === 0
-          ? "col-span-2 row-span-2 h-full w-full relative border rounded-lg cursor-pointer"
-          : "h-full w-full border rounded-lg relative cursor-pointer"
-      }
+      className="relative h-full"
     >
       {isActive && (
         <div className="absolute bg-neutral-900 bg-opacity-90 rounded-lg flex justify-center items-center h-full w-full z-10">
