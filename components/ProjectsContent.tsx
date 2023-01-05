@@ -11,12 +11,13 @@ const ProjectsContent = () => {
   const [overflow, setOverflow] = useState<number>(0);
   const [mapPosition, setMapPosition] = useState<Function>(Function);
 
+  const initMapPosition = () =>
+    gsap.utils.mapRange(0, windowWidth, overflow / 2, overflow / -2);
+
   const onResize = () => {
     setWindowWidth(window.innerWidth);
     setOverflow(contentWidth - windowWidth);
-    setMapPosition(() =>
-      gsap.utils.mapRange(0, windowWidth, overflow / 2, overflow / -2)
-    );
+    setMapPosition(initMapPosition);
   };
 
   const onMouseMove = (e: MouseEvent) => {
@@ -29,9 +30,6 @@ const ProjectsContent = () => {
         ease: "power3",
         x: mapPosition(x),
       });
-
-      // console.log(contentWidth);
-      // console.log(windowWidth);
 
       return;
     }
@@ -48,13 +46,7 @@ const ProjectsContent = () => {
     setContentWidth(scroller.current?.offsetWidth!);
     setWindowWidth(window.innerWidth);
     setOverflow(contentWidth - windowWidth);
-    setMapPosition(() =>
-      gsap.utils.mapRange(0, windowWidth, overflow / 2, overflow / -2)
-    );
-
-    // console.log("windowWidth", windowWidth);
-    // console.log("contentWidth", contentWidth);
-    // console.log("overflow", overflow);
+    setMapPosition(initMapPosition);
 
     window.addEventListener("resize", onResize);
 
