@@ -195,6 +195,8 @@ export const Projects: Projects = [
       { id: "ds1", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
       { id: "ds2", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
       { id: "ds3", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { id: "ds4", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      { id: "ds5", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
     ],
     content: {
       initial: (
