@@ -116,6 +116,12 @@ export const Projects: Projects = [
               </li>
             </ul>
           </div>
+          <br />
+          <p className="text-xs leading-relaxed">
+            Note: The overall flow of application is not complete yet as this
+            app is still in development. Hence, only the features listed above
+            that I think worth to display and demonstrate.
+          </p>
         </article>
       ),
     },
@@ -192,11 +198,47 @@ export const Projects: Projects = [
       "TailwindCSS",
     ],
     gallery: [
-      { id: "ds1", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
       { id: "ds2", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
-      { id: "ds3", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
-      { id: "ds4", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
-      { id: "ds5", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      {
+        id: "ds-public-learning-material",
+        src: "/ds-public-learning-material.png",
+        alt: "Dyslexia Site - Public Learning Material Thumbnail",
+      },
+      {
+        id: "ds-public-learning-material-create",
+        src: "/ds-public-learning-material-create.png",
+        alt: "Dyslexia Site - Public Learning Material (Create Module) Thumbnail",
+      },
+      {
+        id: "ds-public-learning-material-readAll",
+        src: "/ds-public-learning-material-readAll.png",
+        alt: "Dyslexia Site - Public Learning Material (Read All Module) Thumbnail",
+      },
+      {
+        id: "ds-public-learning-material-readOne",
+        src: "/ds-public-learning-material-readOne.png",
+        alt: "Dyslexia Site - Public Learning Material (Read One Module) Thumbnail",
+      },
+      {
+        id: "ds-admin-announcement",
+        src: "/ds-admin-announcement.png",
+        alt: "Dyslexia Site - Admin Announcement Management Thumbnail",
+      },
+      {
+        id: "ds-admin-announcement-edit",
+        src: "/ds-admin-announcement-edit.png",
+        alt: "Dyslexia Site - Admin Announcement Management {Edit Module} Thumbnail",
+      },
+      {
+        id: "ds-admin-announcement-read",
+        src: "/ds-admin-announcement-read.png",
+        alt: "Dyslexia Site - Admin Announcement Management {Read Module} Thumbnail",
+      },
+      {
+        id: "ds-option-module-cud",
+        src: "/ds-option-module-cud.png",
+        alt: "Dyslexia Site - Option {Create, Update, Delete Modules} Thumbnail",
+      },
     ],
     content: {
       initial: (
@@ -231,12 +273,7 @@ export const Projects: Projects = [
             </li>
             <li>
               <span className="text-neutral-400">
-                CRUD operations for Option module
-              </span>
-            </li>
-            <li>
-              <span className="text-neutral-400">
-                One of Specialized Learning Materials module (Simple Game)
+                CUD operations for Option module
               </span>
             </li>
           </ul>
