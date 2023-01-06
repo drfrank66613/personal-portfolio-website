@@ -52,7 +52,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
     <>
       {main && (
         <div className="flex flex-col h-full space-y-1">
-          <div className="h-[60%] border rounded-lg cursor-pointer">
+          <div className="h-[65%] border rounded-lg cursor-pointer">
             <GalleryThumb image={main} viewImage={viewImage} />
           </div>
           <div
