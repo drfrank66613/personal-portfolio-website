@@ -24,7 +24,7 @@ const ProjectThumb = ({ src, alt, id }: ProjectThumbsProps) => {
     <div
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
-      className="mx-1 relative h-full w-[600px] border rounded-lg cursor-pointer"
+      className="relative h-full w-[600px] border rounded-lg cursor-pointer"
       onClick={handleClick}
     >
       {isActive && (
