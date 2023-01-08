@@ -66,25 +66,13 @@ export const Projects: Projects = [
           <br />
           <p>Some key features of the hotel management system include:</p>
           <div>
-            <h3>Receptionist</h3>
+            <h3>General</h3>
             <ul>
               <li>
-                <span className="text-neutral-400">Dashboard: </span>
-                Provides quick information of room availability & occupancy
-                rates
-              </li>
-              <li>
                 <span className="text-neutral-400">
-                  Reservation Management:{" "}
+                  User Authentication (Login & Registration):{" "}
                 </span>
-                Allows receptionist to make reservations and assign rooms to
-                guests
-              </li>
-              <li>
-                <span className="text-neutral-400">
-                  Revenue & Expense Report:{" "}
-                </span>
-                Generates reports of room revenue and operational expenses
+                Provides secure access to restricted resources
               </li>
             </ul>
           </div>
@@ -113,6 +101,29 @@ export const Projects: Projects = [
                 Allows admin to create a Room entity with some details
                 information and assign the room to the avaialable Room-Bed
                 category
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Receptionist</h3>
+            <ul>
+              <li>
+                <span className="text-neutral-400">Dashboard: </span>
+                Provides quick information of room availability & occupancy
+                rates
+              </li>
+              <li>
+                <span className="text-neutral-400">
+                  Reservation Management:{" "}
+                </span>
+                Allows receptionist to make reservations and assign rooms to
+                guests
+              </li>
+              <li>
+                <span className="text-neutral-400">
+                  Revenue & Expense Report:{" "}
+                </span>
+                Generates reports of room revenue and operational expenses
               </li>
             </ul>
           </div>
