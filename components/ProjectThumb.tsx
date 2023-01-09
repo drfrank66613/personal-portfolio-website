@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 type ProjectThumbsProps = {
   src: string;
@@ -9,23 +10,18 @@ type ProjectThumbsProps = {
 };
 
 const ProjectThumb = ({ src, alt, id }: ProjectThumbsProps) => {
-  const router = useRouter();
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleActive = () => {
     setIsActive(!isActive);
   };
 
-  const handleClick = () => {
-    router.push(`/projects/${id}`);
-  };
-
   return (
-    <div
+    <Link
+      href={`/projects/${id}`}
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
       className="relative h-full w-[600px] border rounded-lg cursor-pointer"
-      onClick={handleClick}
     >
       {isActive && (
         <div className="absolute bg-neutral-900 rounded-lg bg-opacity-90 flex justify-center items-center h-full w-full z-10">
@@ -40,7 +36,7 @@ const ProjectThumb = ({ src, alt, id }: ProjectThumbsProps) => {
         priority
         style={{ borderRadius: "0.5rem" }}
       />
-    </div>
+    </Link>
   );
 };
 
