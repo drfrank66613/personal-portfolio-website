@@ -10,6 +10,7 @@ import GalleryThumb from "../../components/GalleryThumb";
 import FullImageGallery from "../../components/FullImageGallery";
 import type { ImageGallery } from "../../data/projects";
 import GalleryLayout from "../../components/GalleryLayout";
+import Link from "next/link";
 
 const ProjectDetails: NextPageWithLayout = () => {
   const router = useRouter();
@@ -28,14 +29,6 @@ const ProjectDetails: NextPageWithLayout = () => {
   const prevProjectIdx =
     Projects.findIndex((project) => project.id === router.query.projectId) - 1;
   const prevProject = Projects.find((_, index) => prevProjectIdx === index);
-
-  const toOtherProject = (id: string) => {
-    router.push(`/projects/${id}`);
-  };
-
-  const backToMain = () => {
-    router.push("/");
-  };
 
   const toggleExpanded = () => {
     setIsContentExpanded((prev) => !prev);
@@ -60,13 +53,13 @@ const ProjectDetails: NextPageWithLayout = () => {
       {currentProject && (
         <div className="h-screen px-11 py-7 flex flex-col">
           <header>
-            <button
+            <Link
+              href="/"
               className="flex items-center space-x-2 cursor-pointer"
-              onClick={backToMain}
             >
               <RiHome2Line size={20} />
               <h2>Back To Main</h2>
-            </button>
+            </Link>
           </header>
 
           <main className="h-[90%] flex space-x-10">
@@ -112,25 +105,25 @@ const ProjectDetails: NextPageWithLayout = () => {
           </main>
           <footer className="flex justify-between">
             {prevProject ? (
-              <button
+              <Link
+                href={`/projects/${prevProject.id}`}
                 className="flex items-center space-x-2 cursor-pointer"
-                onClick={() => toOtherProject(prevProject.id)}
               >
                 <BiLeftArrow size={20} />
                 <h2>{prevProject.name}</h2>
-              </button>
+              </Link>
             ) : (
               <div></div>
             )}
 
             {nextProject ? (
-              <button
+              <Link
+                href={`/projects/${nextProject.id}`}
                 className="flex items-center space-x-2 cursor-pointer"
-                onClick={() => toOtherProject(nextProject.id)}
               >
                 <h2>{nextProject.name}</h2>
                 <BiRightArrow size={20} />
-              </button>
+              </Link>
             ) : (
               <div></div>
             )}
