@@ -64,13 +64,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           <section className="flex flex-col w-[79%]">
             <nav className="flex justify-between">
               {links.map((link, index) => (
-                <div
+                <Link
+                  href={`/${link}`}
                   key={index}
                   className="p-4 relative cursor-pointer"
-                  onClick={() => {
-                    router.push(`/${link}`);
-                    setSelected(link);
-                  }}
+                  onClick={() => setSelected(link)}
                 >
                   <h1 className="capitalize">{link}</h1>
                   {selected === link ? (
@@ -83,7 +81,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                       className="absolute inset-0 -bottom-[1px] border border-b-[#0f0f0f] rounded-t-lg z-0"
                     />
                   ) : null}
-                </div>
+                </Link>
               ))}
             </nav>
             <AnimatePresence mode="wait">
