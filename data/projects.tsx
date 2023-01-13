@@ -130,8 +130,8 @@ export const Projects: Projects = [
           <br />
           <p className="text-xs leading-relaxed">
             Note: The overall flow of application is not complete yet as this
-            app is still in development. Hence, only the features listed above
-            that I think worth to display and demonstrate.
+            app is still in development. Hence, only the features above are
+            listed, which I think worth to display and demonstrate.
           </p>
         </article>
       ),
