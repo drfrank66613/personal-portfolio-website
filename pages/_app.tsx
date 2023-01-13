@@ -56,12 +56,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </aside>
 
       <main className="h-full px-11 py-7">
-        <div className="flex h-[50%] space-x-5">
-          <aside className="relative h-[110%] min-w-[19%] w-[19%] border rounded-lg">
+        <div className="flex h-[50%] lg:space-x-5">
+          <aside className="relative h-[110%] min-w-[200px] md:hidden lg:block lg:min-w-[220px] xl:min-w-[300px] border rounded-lg">
             <Logo />
           </aside>
 
-          <section className="flex flex-col w-[79%]">
+          <section className="flex flex-col grow">
             <nav className="flex justify-between">
               {links.map((link, index) => (
                 <Link
