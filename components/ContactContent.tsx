@@ -65,7 +65,8 @@ const ContactContent = () => {
         variants={contentVariants}
         className="h-full flex space-x-3 relative py-4"
       >
-        <div className="w-[90%] flex flex-col space-y-3">
+        {/* w-[90%] md:w-[86%] lg:w-[87%] xl:w-[90%] */}
+        <div className="grow flex flex-col space-y-3">
           <input
             {...register("name")}
             required
@@ -96,7 +97,7 @@ const ContactContent = () => {
 
         <button
           disabled={isLoading ? true : false}
-          className={`border rounded-sm grow flex items-center justify-center ${
+          className={`border rounded-sm min-w-[20%] sm:min-w-[10%] flex items-center justify-center ${
             isBtnHovered ? "border-neutral-500" : ""
           }`}
           type="submit"
@@ -108,12 +109,12 @@ const ContactContent = () => {
               strokeColor="white"
               strokeWidth="2"
               animationDuration="0.75"
-              width="30"
+              width="25"
               visible={true}
             />
           ) : (
             <AiOutlineSend
-              size={30}
+              size={25}
               className={isBtnHovered ? "text-neutral-500" : ""}
             />
           )}
