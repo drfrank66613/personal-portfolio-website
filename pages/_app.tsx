@@ -51,13 +51,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <div className="h-screen relative">
-      <aside className="my-7 mx-3 absolute">
+      <aside className="my-6 md:my-7 mx-3 absolute">
         <MovingText />
       </aside>
 
-      <main className="h-full px-11 py-7">
-        <div className="flex h-[50%] lg:space-x-5">
-          <aside className="relative h-[110%] min-w-[200px] md:hidden lg:block lg:min-w-[220px] xl:min-w-[300px] border rounded-lg">
+      <main className="h-full flex flex-col px-3 md:px-11 pt-16 pb-6 md:py-7 ">
+        <div className="flex h-fit lg:h-[50%] lg:space-x-5">
+          <aside className="relative h-[110%] min-w-[200px] hidden md:hidden lg:block lg:min-w-[220px] xl:min-w-[300px] border rounded-lg">
             <Logo />
           </aside>
 
@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 <Link
                   href={`/${link}`}
                   key={index}
-                  className="p-4 relative cursor-pointer"
+                  className="px-3 py-4 sm:px-4 sm:py-4 relative cursor-pointer"
                   onClick={() => setSelected(link)}
                 >
                   <h1 className="capitalize">{link}</h1>
@@ -93,14 +93,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 animate="visible"
                 exit="exit"
               >
-                <div className="px-5 py-4">
+                <div className="px-3 sm:px-5 py-3 sm:py-4">
                   <Component {...pageProps} />
                 </div>
               </motion.article>
             </AnimatePresence>
           </section>
         </div>
-        <div className="h-[50%] pt-2">
+        <div className="grow lg:h-[50%] pt-2">
           <section className="h-full flex flex-col">
             <h1 className="text-right">Projects</h1>
             <ProjectsContent />
