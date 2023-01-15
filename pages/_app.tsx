@@ -56,8 +56,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </aside>
 
       <main className="h-full flex flex-col px-3 md:px-11 pt-16 pb-6 md:py-7 ">
-        <div className="flex h-fit lg:h-[50%] lg:space-x-5">
-          <aside className="relative h-[110%] min-w-[200px] hidden md:hidden lg:block lg:min-w-[220px] xl:min-w-[300px] border rounded-lg">
+        <div className="flex h-fit min-h-[40%] lg:h-[50%] lg:space-x-5">
+          <aside className="relative h-[110%] min-w-[270px] hidden md:hidden lg:block border rounded-lg">
             <Logo />
           </aside>
 
