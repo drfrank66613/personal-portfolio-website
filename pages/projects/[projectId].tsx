@@ -73,7 +73,7 @@ const ProjectDetails: NextPageWithLayout = () => {
                     return (
                       <label
                         key={skill}
-                        className="skills-list text-sm text-neutral-400"
+                        className="skills-list text-xs lg:text-sm text-neutral-400"
                       >
                         {skill + divider}
                       </label>
