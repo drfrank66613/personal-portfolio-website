@@ -1,5 +1,5 @@
 import { useState, MouseEvent, useRef, useEffect } from "react";
-import { ImageGallery } from "../data/projects";
+import type { ImageGallery } from "../data/projects";
 import GalleryThumb from "./GalleryThumb";
 import Image from "next/image";
 import { gsap } from "gsap";
@@ -15,6 +15,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
   const router = useRouter();
   const container = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
+  const mainEl = useRef<HTMLDivElement>(null);
   const [panX, setPanX] = useState<number>(0);
   const md = useMediaQuery({ minWidth: 768 });
 
@@ -48,14 +49,24 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
       ease: "power3",
       x: 0,
     });
-  }, [router.query.projectId]);
+
+    gsap.to(mainEl.current, {
+      duration: 0,
+      overwrite: true,
+      ease: "power3",
+      x: 0,
+    });
+  }, [router.query.projectId, md]);
 
   return (
     <>
       {md ? (
         main && (
           <div className="flex flex-col h-full space-y-1">
-            <div className="h-[65%] border rounded-lg cursor-pointer">
+            <div
+              ref={mainEl}
+              className="h-[65%] border rounded-lg cursor-pointer"
+            >
               <GalleryThumb image={main} viewImage={viewImage} />
             </div>
             <div
@@ -65,7 +76,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
             >
               <div ref={content} className="flex space-x-1 w-fit h-full">
                 {sides.map((image) => (
-                  <div className="w-[290px] h-full border rounded-lg cursor-pointer">
+                  <div className="md:w-[230px] lg:w-[290px] h-full border rounded-lg cursor-pointer">
                     <GalleryThumb image={image} viewImage={viewImage} />
                   </div>
                 ))}
@@ -74,10 +85,14 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
           </div>
         )
       ) : (
-        <div className="h-[80%] w-full overflow-hidden border-x-2 rounded-lg">
-          <div className="flex h-full space-x-2 w-fit text-black">
+        <div
+          ref={container}
+          onMouseMove={onMouseMove}
+          className="h-[80%] overflow-hidden border-x-2 rounded-lg"
+        >
+          <div ref={content} className="flex h-full space-x-2 w-fit text-black">
             {gallery.map((image, index) => (
-              <div className="w-[500px] h-full border rounded-lg cursor-pointer">
+              <div className="w-[370px] sm:w-[500px] h-full border rounded-lg cursor-pointer">
                 <GalleryThumb image={image} viewImage={viewImage} />
               </div>
             ))}
