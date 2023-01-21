@@ -6,7 +6,7 @@ export type ImageGallery = {
   alt: string;
 };
 
-type Projects = {
+export type Project = {
   id: string;
   name: string;
   skills: string[];
@@ -15,9 +15,9 @@ type Projects = {
     initial: ReactNode;
     full: ReactNode;
   };
-}[];
+};
 
-export const Projects: Projects = [
+export const Projects: Project[] = [
   {
     id: "hotel-management-system",
     name: "Hotel Management System",
