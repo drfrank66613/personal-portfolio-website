@@ -57,15 +57,11 @@ const SkillsLabel = ({ project, scrollableContent }: SkillsLabelProps) => {
 
       if (offsetWidth + scrollLeft + 1 >= scrollWidth) {
         setIsRightArrowHidden(true);
-        console.log("hidden");
       } else {
-        console.log("display");
         setIsRightArrowHidden(false);
       }
     }
   };
-
-  // FIX arrow on resize
 
   useEffect(() => {
     if (
@@ -76,13 +72,27 @@ const SkillsLabel = ({ project, scrollableContent }: SkillsLabelProps) => {
     } else {
       setIsRightArrowHidden(true);
     }
-    console.log(scrollableLabel);
   }, [scrollableLabel.current?.offsetWidth]);
+
+  // Re-render on browser resize
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const setWindowDimensions = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", setWindowDimensions);
+    return () => {
+      window.removeEventListener("resize", setWindowDimensions);
+    };
+  }, []);
 
   return (
     <div className="relative">
       {md || isLeftArrowHidden || (
-        <div className="absolute inset-y-0 left-0 bg-[#0f0f0f] w-5 flex justify-center items-center">
+        <div className="absolute inset-y-0 left-0 bg-[#0f0f0f] shadow-[10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
           <BiChevronLeft />
         </div>
       )}
@@ -107,7 +117,7 @@ const SkillsLabel = ({ project, scrollableContent }: SkillsLabelProps) => {
         })}
       </div>
       {md || isRightArrowHidden || (
-        <div className="absolute inset-y-0 right-0 bg-[#0f0f0f] w-5 flex justify-center items-center">
+        <div className="absolute inset-y-0 right-0 bg-[#0f0f0f] shadow-[-10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
           <BiChevronRight />
         </div>
       )}
