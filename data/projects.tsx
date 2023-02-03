@@ -4,6 +4,7 @@ export type ImageGallery = {
   id: string;
   src: string;
   alt: string;
+  type: "image" | "video";
 };
 
 export type Project = {
@@ -34,19 +35,28 @@ export const Projects: Project[] = [
     ],
     gallery: [
       {
+        id: "hms-video",
+        src: "https://youtu.be/x7Z9BR96-Os",
+        alt: "Hotel Management System Demo Video",
+        type: "video",
+      },
+      {
         id: "hms",
         src: "/hotel-management-system.png",
         alt: "Hotel Management System Thumbnail",
+        type: "image",
       },
       {
         id: "hms-reservation",
         src: "/hms-reservation.png",
         alt: "Hotel Management System - Reservation Thumbnail",
+        type: "image",
       },
       {
         id: "hms-rooms-management",
         src: "/hms-rooms-management.png",
         alt: "Hotel Management System - Rooms Management Thumbnail",
+        type: "image",
       },
     ],
     content: {
@@ -146,16 +156,19 @@ export const Projects: Project[] = [
         id: "tgs",
         src: "/the-generations-site.png",
         alt: "The Generation Site Thumbnail",
+        type: "image",
       },
       {
         id: "tgs-featured-guests",
         src: "/tgs-featured-guests.png",
         alt: "The Generation Site - Featured Guests Thumbnail",
+        type: "image",
       },
       {
         id: "tgs-footer",
         src: "/tgs-footer.png",
         alt: "The Generation Site - Footer Thumbnail",
+        type: "image",
       },
     ],
     content: {
@@ -209,46 +222,59 @@ export const Projects: Project[] = [
       "TailwindCSS",
     ],
     gallery: [
-      { id: "ds2", src: "/dyslexia-site.png", alt: "Dyslexia Site Thumbnail" },
+      {
+        id: "ds2",
+        src: "/dyslexia-site.png",
+        alt: "Dyslexia Site Thumbnail",
+        type: "image",
+      },
       {
         id: "ds-public-learning-material",
         src: "/ds-public-learning-material.png",
         alt: "Dyslexia Site - Public Learning Material Thumbnail",
+        type: "image",
       },
       {
         id: "ds-public-learning-material-create",
         src: "/ds-public-learning-material-create.png",
         alt: "Dyslexia Site - Public Learning Material (Create Module) Thumbnail",
+        type: "image",
       },
       {
         id: "ds-public-learning-material-readAll",
         src: "/ds-public-learning-material-readAll.png",
         alt: "Dyslexia Site - Public Learning Material (Read All Module) Thumbnail",
+        type: "image",
       },
       {
         id: "ds-public-learning-material-readOne",
         src: "/ds-public-learning-material-readOne.png",
         alt: "Dyslexia Site - Public Learning Material (Read One Module) Thumbnail",
+        type: "image",
       },
       {
         id: "ds-admin-announcement",
         src: "/ds-admin-announcement.png",
         alt: "Dyslexia Site - Admin Announcement Management Thumbnail",
+        type: "image",
       },
       {
         id: "ds-admin-announcement-edit",
         src: "/ds-admin-announcement-edit.png",
         alt: "Dyslexia Site - Admin Announcement Management {Edit Module} Thumbnail",
+        type: "image",
       },
       {
         id: "ds-admin-announcement-read",
         src: "/ds-admin-announcement-read.png",
         alt: "Dyslexia Site - Admin Announcement Management {Read Module} Thumbnail",
+        type: "image",
       },
       {
         id: "ds-option-module-cud",
         src: "/ds-option-module-cud.png",
         alt: "Dyslexia Site - Option {Create, Update, Delete Modules} Thumbnail",
+        type: "image",
       },
     ],
     content: {
