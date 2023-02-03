@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import type { ImageGallery } from "../data/projects";
+import ReactPlayer from "react-player/youtube";
 
 type FullImageGalleryProps = {
   isOpen: boolean;
@@ -51,14 +52,27 @@ const FullImageGallery = ({
             </div>
           )}
 
-          <div className="relative w-[90%] h-full select-none">
-            <Image
-              src={currentImage.src}
-              alt={currentImage.alt}
-              fill
-              style={{ objectFit: "contain" }}
-            />
-          </div>
+          {currentImage.type === "image" && (
+            <div className="relative w-[90%] h-full select-none">
+              <Image
+                src={currentImage.src}
+                alt={currentImage.alt}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          )}
+
+          {currentImage.type === "video" && (
+            <div className="relative w-[90%] h-full max-h-[95%] select-none">
+              <ReactPlayer
+                url={currentImage.src}
+                height="100%"
+                width="100%"
+                controls
+              />
+            </div>
+          )}
 
           {nextImage ? (
             <button
