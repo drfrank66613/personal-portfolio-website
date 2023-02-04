@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, MouseEvent } from "react";
+import { useRef, useState, useEffect, MouseEvent, TouchEvent } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import ProjectThumb from "./ProjectThumb";
@@ -39,6 +39,10 @@ const ProjectsContent = () => {
       ease: "power3",
       x: panX,
     });
+
+    console.log(containerMouseX);
+
+    // console.log(panX);
     // if (overflow > 0) {
     //   let x = e.clientX || 0;
 
@@ -71,11 +75,82 @@ const ProjectsContent = () => {
   //   });
   // }, [windowWidth, contentWidth, overflow]);
 
+  const [touchStart, setTouchStart] = useState<number>(0);
+
+  const onTouchStart = (e: TouchEvent) => {
+    let containerMouseX =
+      e.targetTouches[0].clientX - container.current?.offsetLeft!;
+
+    if (containerMouseX < 0) {
+      containerMouseX = 0;
+    }
+
+    setTouchStart(containerMouseX);
+  };
+
+  // const onTouchEnd = (e: TouchEvent) => {
+  //   setTouchStart(0);
+  // };
+
+  //FIX touch event
+
+  const onTouchMove = (e: TouchEvent) => {
+    // console.log(e.targetTouches[0].clientX);
+    // setTouchStart(e.targetTouches[0].clientX);
+
+    // console.log(window.innerWidth);
+
+    let containerMouseX =
+      e.targetTouches[0].clientX - container.current?.offsetLeft!;
+    if (containerMouseX < 0) {
+      containerMouseX = 0;
+    }
+
+    // console.log(containerMouseX);
+
+    const xDecimal = containerMouseX / container.current?.offsetWidth!;
+
+    const maxX =
+      content.current?.offsetWidth! - container.current?.offsetWidth!;
+
+    // if (containerMouseX < 0) {
+    //   setPanX(0);
+    // } else if (containerMouseX > container.current?.offsetWidth!) {
+    //   setPanX(maxX * -1);
+    // } else {
+    // if (containerMouseX > touchStart) {
+    //   setPanX(touchStart - containerMouseX);
+    // } else if (containerMouseX < touchStart) {
+    setPanX(touchStart - containerMouseX);
+    // }
+    // }
+
+    console.log("containerMouseX:", containerMouseX);
+    console.log("touchStart:", touchStart);
+    console.log("panX:", panX);
+
+    // console.log(content);
+
+    gsap.to(content.current, {
+      duration: 1,
+      overwrite: true,
+      ease: "power3",
+      translateX: `-=${panX}`,
+    });
+  };
+
+  // useEffect(() => {
+  //   if (panX > 0) setPanX(0);
+  // }, [panX]);
+
   return (
     <div
       ref={container}
       className="h-full w-full overflow-hidden border-x-2 rounded-lg"
       onMouseMove={onMouseMove}
+      onTouchStart={onTouchStart}
+      // onTouchEnd={onTouchEnd}
+      onTouchMove={onTouchMove}
     >
       <div className="flex h-full space-x-2 w-fit text-black" ref={content}>
         {Projects.map(({ id, name }, index) => (
