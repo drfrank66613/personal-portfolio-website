@@ -10,6 +10,7 @@ type GalleryThumbProps = {
 
 const GalleryThumb = ({ image, viewImage }: GalleryThumbProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
 
   const toggleActive = () => {
     setIsActive(!isActive);
@@ -40,7 +41,12 @@ const GalleryThumb = ({ image, viewImage }: GalleryThumbProps) => {
       )}
       {image.type === "video" && (
         <div className="relative h-full">
+          <div
+            className="absolute inset-0"
+            onClick={() => setIsVideoPlaying(!isVideoPlaying)}
+          ></div>
           <ReactPlayer
+            playing={isVideoPlaying}
             url={image.src}
             height="100%"
             width="100%"
