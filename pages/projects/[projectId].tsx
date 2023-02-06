@@ -93,7 +93,7 @@ const ProjectDetails: NextPageWithLayout = () => {
                 </div>
               </div>
             </section>
-            <section className="md:w-[40%] sm:h-[50%] md:h-full h-[40%] md:py-32 lg:py-20">
+            <section className="md:w-[40%] h-[40%] sm:h-[50%] md:h-full md:py-32 lg:py-20">
               <GalleryLayout
                 gallery={currentProject.gallery}
                 viewImage={viewImage}
