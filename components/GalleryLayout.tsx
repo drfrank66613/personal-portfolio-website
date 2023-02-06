@@ -6,6 +6,7 @@ import { motion, useDragControls } from "framer-motion";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
+import Slideshow from "./Slideshow";
 
 type GalleryLayoutProps = {
   gallery: ImageGallery[];
@@ -142,35 +143,8 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
           </div>
         )
       ) : (
-        <div
-          ref={container}
-          onMouseMove={onMouseMove}
-          // onTouchStart={onTouchStart}
-          // onTouchMove={onTouchMove}
-          className="h-[80%] overflow-hidden border-x-2 rounded-lg"
-        >
-          <motion.div
-            drag="x"
-            dragConstraints={container}
-            dragElastic={0}
-            dragTransition={{ timeConstant: 200, power: 0.2 }}
-            onAnimationComplete={() => {
-              setIsDurationZero(false);
-            }}
-            dragControls={controls}
-            // dragSnapToOrigin={true}
-            // dragListener={false}
-            animate={{ x: panX }}
-            transition={{ ease: "easeOut", duration: isDurationZero ? 0 : 0.5 }}
-            ref={content}
-            className="flex h-full space-x-2 w-fit text-black"
-          >
-            {gallery.map((image, index) => (
-              <div className="w-[370px] sm:w-[500px] h-full border rounded-lg cursor-pointer">
-                <GalleryThumb image={image} viewImage={viewImage} />
-              </div>
-            ))}
-          </motion.div>
+        <div className="h-[80%]">
+          <Slideshow gallery={gallery} />
         </div>
       )}
     </>
