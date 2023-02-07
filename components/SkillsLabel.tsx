@@ -107,10 +107,7 @@ const SkillsLabel = ({ project, scrollableContent }: SkillsLabelProps) => {
           const divider = index + 1 === skills.length ? "" : " | ";
 
           return (
-            <label
-              key={skill}
-              className="skills-list text-xs lg:text-sm text-neutral-400"
-            >
+            <label key={skill} className="project-skills-list">
               {skill + divider}
             </label>
           );
