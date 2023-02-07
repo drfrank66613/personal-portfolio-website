@@ -41,7 +41,7 @@ const FullImageGallery = ({
         <div className="inset-0 fixed h-screen w-screen z-10 bg-neutral-900 bg-opacity-95 flex justify-evenly items-center">
           {prevImage ? (
             <button
-              className="cursor-pointer bg-black p-2 rounded-lg"
+              className="bg-black p-2 rounded-lg"
               onClick={() => changeImage(prevImage)}
             >
               <AiOutlineLeft size={20} />
@@ -64,11 +64,12 @@ const FullImageGallery = ({
           )}
 
           {currentImage.type === "video" && (
-            <div className="relative w-[90%] h-full max-h-[95%] select-none">
+            <div className="relative w-[90%] pt-[56.25%] h-fit max-h-[95%] select-none">
               <ReactPlayer
                 url={currentImage.src}
                 height="100%"
                 width="100%"
+                style={{ position: "absolute", top: 0, left: 0 }}
                 controls
               />
             </div>
@@ -76,7 +77,7 @@ const FullImageGallery = ({
 
           {nextImage ? (
             <button
-              className="cursor-pointer bg-black p-2 rounded-lg"
+              className="bg-black p-2 rounded-lg"
               onClick={() => changeImage(nextImage)}
             >
               <AiOutlineRight size={20} />
