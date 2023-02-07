@@ -14,13 +14,13 @@
     @apply font-krete font-normal text-white text-opacity-90 tracking-widest;
   }
   h3 {
-    @apply text-sm leading-loose underline underline-offset-4;
+    @apply text-sm leading-loose xl:text-xl xl:leading-loose underline underline-offset-4;
   }
   p {
-    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-xl xl:leading-loose text-justify;
+    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-2xl xl:leading-loose text-justify;
   }
   ul {
-    @apply list-disc list-outside pl-4 text-sm leading-loose text-justify;
+    @apply list-disc list-outside pl-4 text-sm leading-loose xl:text-xl xl:leading-loose text-justify;
   }
   input, textarea {
     @apply text-xs md:text-xs lg:text-xs xl:text-base font-thin text-opacity-90 px-1 lg:px-1 xl:px-2 h-7 md:h-6 lg:h-6 xl:h-9 bg-transparent border rounded-sm outline-none
@@ -53,7 +53,13 @@
     @apply font-krete text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl font-normal text-white text-opacity-90 tracking-widest;
   }
   .more-less-text {
-    @apply text-sm text-neutral-300 tracking-widest cursor-pointer
+    @apply text-sm xl:text-lg text-neutral-300 tracking-widest cursor-pointer
+  }
+  .project-note {
+    @apply text-xs leading-relaxed xl:text-base xl:leading-relaxed
+  }
+  .project-skills-list {
+    @apply font-krete text-xs xl:text-lg xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
   }
 }
 
