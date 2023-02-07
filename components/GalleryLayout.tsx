@@ -1,9 +1,7 @@
-import { useState, MouseEvent, TouchEvent, useRef, useEffect } from "react";
+import { useState, PointerEvent, useRef, useEffect } from "react";
 import type { ImageGallery } from "../data/projects";
 import GalleryThumb from "./GalleryThumb";
-import Image from "next/image";
 import { motion, useDragControls } from "framer-motion";
-import { gsap } from "gsap";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
 import Slideshow from "./Slideshow";
@@ -19,82 +17,31 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
   const content = useRef<HTMLDivElement>(null);
   const mainEl = useRef<HTMLDivElement>(null);
   const [panX, setPanX] = useState<number>(0);
-  const [touchStartX, setTouchStartX] = useState<number>(0);
   const [isDurationZero, setIsDurationZero] = useState<boolean>(false);
+  const controls = useDragControls();
   const md = useMediaQuery({ minWidth: 768 });
 
   const main = gallery.find((_, index) => index === 0);
   const sides = gallery.filter((_, index) => index !== 0);
 
-  const onMouseMove = (e: MouseEvent) => {
-    const containerMouseX = e.clientX - container.current?.offsetLeft!;
+  const onPointerMove = (e: PointerEvent) => {
+    if (e.pointerType === "mouse") {
+      const containerMouseX = e.clientX - container.current?.offsetLeft!;
 
-    const xDecimal = containerMouseX / container.current?.offsetWidth!;
+      const xDecimal = containerMouseX / container.current?.offsetWidth!;
 
-    const maxX =
-      content.current?.offsetWidth! - container.current?.offsetWidth!;
+      const maxX =
+        content.current?.offsetWidth! - container.current?.offsetWidth!;
 
-    setPanX(maxX * xDecimal * -1);
+      setPanX(maxX * xDecimal * -1);
+    }
   };
-
-  // const onTouchStart = (e: TouchEvent) => {
-  //   let containerClientX =
-  //     e.targetTouches[0].clientX - container.current?.offsetLeft!;
-
-  //   if (containerClientX < 0) {
-  //     containerClientX = 0;
-  //   }
-  //   if (containerClientX > container.current?.offsetWidth!) {
-  //     containerClientX = container.current?.offsetWidth!;
-  //   }
-
-  //   setTouchStartX(containerClientX);
-  // };
-
-  // const onTouchMove = (e: TouchEvent) => {
-  //   let containerClientX =
-  //     e.targetTouches[0].clientX - container.current?.offsetLeft!;
-
-  //   if (containerClientX < 0) {
-  //     containerClientX = 0;
-  //   }
-  //   if (containerClientX > container.current?.offsetWidth!) {
-  //     containerClientX = container.current?.offsetWidth!;
-  //   }
-
-  //   setTouchStartX(containerClientX);
-
-  //   if (touchStartX < e.targetTouches[0].clientX) {
-  //     setPanX((prev) => prev - (touchStartX - containerClientX));
-  //   }
-  //   if (touchStartX > e.targetTouches[0].clientX) {
-  //     setPanX((prev) => prev + (containerClientX - touchStartX));
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const minX = content.current?.offsetLeft! - container.current?.offsetLeft!;
-
-  //   const maxX =
-  //     content.current?.offsetWidth! - container.current?.offsetWidth!;
-
-  //   if (panX < -maxX) {
-  //     setPanX(-maxX);
-  //   }
-  //   if (panX > minX) {
-  //     setPanX(minX);
-  //   }
-  // }, [panX]);
 
   useEffect(() => {
     setPanX(0);
 
     setIsDurationZero(true);
   }, [router.query.projectId, md]);
-
-  const controls = useDragControls();
-
-  console.log("render");
 
   return (
     <>
@@ -109,9 +56,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
             </div>
             <div
               ref={container}
-              onMouseMove={onMouseMove}
-              // onTouchStart={onTouchStart}
-              // onTouchMove={onTouchMove}
+              onPointerMove={onPointerMove}
               className="grow overflow-hidden border-x rounded-lg"
             >
               <motion.div
@@ -123,8 +68,6 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 onAnimationComplete={() => {
                   setIsDurationZero(false);
                 }}
-                // dragSnapToOrigin={isDurationZero ? true : false}
-                // initial={{ x: 0 }}
                 animate={{ x: panX }}
                 transition={{
                   ease: "easeOut",
@@ -144,7 +87,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
         )
       ) : (
         <div className="h-[80%]">
-          <Slideshow gallery={gallery} />
+          <Slideshow gallery={gallery} viewImage={viewImage} />
         </div>
       )}
     </>
