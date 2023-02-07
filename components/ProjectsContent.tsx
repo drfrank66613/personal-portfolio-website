@@ -24,7 +24,7 @@ const ProjectsContent = () => {
   return (
     <div
       ref={container}
-      className="h-full w-full overflow-hidden border-x-2 rounded-lg"
+      className="h-full w-full overflow-hidden border-x-2 xl:border-x-4 rounded-lg"
       onPointerMove={onPointerMove}
     >
       <motion.div
