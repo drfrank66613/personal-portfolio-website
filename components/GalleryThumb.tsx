@@ -40,20 +40,12 @@ const GalleryThumb = ({ image, viewImage }: GalleryThumbProps) => {
         </div>
       )}
       {image.type === "video" && (
-        <div className="relative h-full">
-          <div
-            className="absolute inset-0"
-            onClick={() => setIsVideoPlaying(!isVideoPlaying)}
-          ></div>
+        <div className="relative h-full p-[2px]">
           <ReactPlayer
             playing={isVideoPlaying}
             url={image.src}
             height="100%"
             width="100%"
-            style={{
-              overflow: "hidden",
-              borderRadius: "0.5rem",
-            }}
             controls
           />
         </div>
