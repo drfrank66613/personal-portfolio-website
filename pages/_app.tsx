@@ -57,7 +57,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
       <main className="h-full flex flex-col px-3 md:px-11 pt-16 pb-6 md:py-7 ">
         <div className="flex h-fit min-h-[40%] lg:h-[50%] lg:space-x-5">
-          <aside className="relative h-[110%] min-w-[270px] hidden md:hidden lg:block border rounded-lg">
+          <aside className="relative xl:h-[105%] lg:h-[110%] lg:min-w-[25%] hidden lg:block border xl:border-2 rounded-lg">
             <Logo />
           </aside>
 
@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                         ease: "easeOut",
                       }}
                       layoutId="border"
-                      className="absolute inset-0 -bottom-[1px] border border-b-[#0f0f0f] rounded-t-lg z-0"
+                      className="absolute inset-0 border border-b-0 xl:border-2 xl:border-b-0 rounded-t-lg -z-10"
                     />
                   ) : null}
                 </Link>
@@ -86,7 +86,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             </nav>
             <AnimatePresence mode="wait">
               <motion.article
-                className={`content-border border ${borderTopStyle} rounded-lg overflow-auto`}
+                className={`content-border border xl:border-2 ${borderTopStyle} rounded-lg overflow-auto`}
                 key={currentPath}
                 variants={containerVariants}
                 initial="hidden"
