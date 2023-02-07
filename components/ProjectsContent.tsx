@@ -1,6 +1,4 @@
-import { useRef, useState, useEffect, MouseEvent, TouchEvent } from "react";
-import { gsap } from "gsap";
-import Image from "next/image";
+import { useRef, useState, PointerEvent } from "react";
 import ProjectThumb from "./ProjectThumb";
 import { Projects } from "../data/projects";
 import { motion } from "framer-motion";
@@ -10,22 +8,24 @@ const ProjectsContent = () => {
   const content = useRef<HTMLDivElement>(null);
   const [panX, setPanX] = useState<number>(0);
 
-  const onMouseMove = (e: MouseEvent) => {
-    const containerMouseX = e.clientX - container.current?.offsetLeft!;
+  const onPointerMove = (e: PointerEvent) => {
+    if (e.pointerType === "mouse") {
+      const containerMouseX = e.clientX - container.current?.offsetLeft!;
 
-    const xDecimal = containerMouseX / container.current?.offsetWidth!;
+      const xDecimal = containerMouseX / container.current?.offsetWidth!;
 
-    const maxX =
-      content.current?.offsetWidth! - container.current?.offsetWidth!;
+      const maxX =
+        content.current?.offsetWidth! - container.current?.offsetWidth!;
 
-    setPanX(maxX * xDecimal * -1);
+      setPanX(maxX * xDecimal * -1);
+    }
   };
 
   return (
     <div
       ref={container}
       className="h-full w-full overflow-hidden border-x-2 rounded-lg"
-      onMouseMove={onMouseMove}
+      onPointerMove={onPointerMove}
     >
       <motion.div
         drag="x"
