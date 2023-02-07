@@ -138,7 +138,7 @@ export const Projects: Project[] = [
             </ul>
           </div>
           <br />
-          <p className="text-xs leading-relaxed">
+          <p className="project-note">
             Note: The overall flow of application is not complete yet as this
             app is still in development. Hence, only the features above are
             listed, which I think worth to display and demonstrate.
@@ -315,7 +315,7 @@ export const Projects: Project[] = [
             </li>
           </ul>
           <br />
-          <p className="text-xs leading-relaxed">
+          <p className="project-note">
             Note: The application is bound to a Non Disclosure Agreement with
             Research Innovation and Enterprise Centre (RIEC), hence only
             screenshots of features that I've applied are displayed here
