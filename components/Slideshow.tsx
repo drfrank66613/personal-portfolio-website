@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { ImageGallery } from "../data/projects";
 import Image from "next/image";
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 
 type SlideshowProps = {
   gallery: ImageGallery[];
+  viewImage: (image: ImageGallery) => void;
 };
 
-const Slideshow = ({ gallery }: SlideshowProps) => {
+const Slideshow = ({ gallery, viewImage }: SlideshowProps) => {
   const [index, setIndex] = useState<number>(0);
   const [isPrevActive, setIsPrevActive] = useState<boolean>(true);
   const [isNextActive, setIsNextActive] = useState<boolean>(true);
@@ -35,13 +37,18 @@ const Slideshow = ({ gallery }: SlideshowProps) => {
   }, [index]);
 
   return (
-    <div className="h-full flex items-center">
+    <div className="h-full flex items-center space-x-1">
       {isPrevActive ? (
-        <div className="border p-2" onClick={prevItem}>
-          {"<"}
-        </div>
+        <button className="bg-black p-1 rounded-lg" onClick={prevItem}>
+          <AiOutlineLeft size={15} />
+        </button>
       ) : (
-        <div className="invisible border p-2">{"<"}</div>
+        <button
+          className="invisible bg-black p-1 rounded-lg"
+          onClick={prevItem}
+        >
+          <AiOutlineLeft size={15} />
+        </button>
       )}
       {gallery[index].type === "video" && (
         <div className="relative h-full w-full border-2 rounded-lg p-[2px]">
@@ -54,7 +61,10 @@ const Slideshow = ({ gallery }: SlideshowProps) => {
         </div>
       )}
       {gallery[index].type === "image" && (
-        <div className="relative h-full w-full border-2 rounded-lg overflow-hidden">
+        <div
+          className="relative h-full w-full border-2 rounded-lg overflow-hidden"
+          onClick={() => viewImage(gallery[index])}
+        >
           <Image
             src={gallery[index].src}
             alt={gallery[index].alt}
@@ -64,11 +74,16 @@ const Slideshow = ({ gallery }: SlideshowProps) => {
         </div>
       )}
       {isNextActive ? (
-        <div className="border p-2" onClick={nextItem}>
-          {">"}
-        </div>
+        <button className="bg-black p-1 rounded-lg" onClick={nextItem}>
+          <AiOutlineRight size={15} />
+        </button>
       ) : (
-        <div className="invisible border p-2">{">"}</div>
+        <button
+          className="invisible bg-black p-1 rounded-lg"
+          onClick={nextItem}
+        >
+          <AiOutlineRight size={15} />
+        </button>
       )}
     </div>
   );
