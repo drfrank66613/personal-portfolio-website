@@ -17,7 +17,7 @@
     @apply text-sm leading-loose xl:text-xl xl:leading-loose underline underline-offset-4;
   }
   p {
-    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-2xl xl:leading-loose text-justify;
+    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-xl xl:leading-loose text-justify;
   }
   ul {
     @apply list-disc list-outside pl-4 text-sm leading-loose xl:text-xl xl:leading-loose text-justify;
@@ -60,6 +60,9 @@
   }
   .project-skills-list {
     @apply font-krete text-xs xl:text-lg xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
+  }
+  .moving-text {
+    @apply text-xl tracking-wider md:text-xl md:leading-6 lg:text-2xl lg:leading-6 xl:text-3xl xl:leading-6
   }
 }
 
