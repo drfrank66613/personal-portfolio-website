@@ -64,7 +64,7 @@ const FullImageGallery = ({
           )}
 
           {currentImage.type === "video" && (
-            <div className="relative w-[90%] pt-[56.25%] h-fit max-h-[95%] select-none">
+            <div className="relative w-[90%] pt-[56.25%] xl:pt-0 h-fit xl:h-full max-h-[95%] select-none">
               <ReactPlayer
                 url={currentImage.src}
                 height="100%"
