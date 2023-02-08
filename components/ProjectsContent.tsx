@@ -1,7 +1,7 @@
 import { useRef, useState, PointerEvent } from "react";
 import ProjectThumb from "./ProjectThumb";
 import { Projects } from "../data/projects";
-import { motion } from "framer-motion";
+import { motion, useDragControls } from "framer-motion";
 
 const ProjectsContent = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -24,13 +24,19 @@ const ProjectsContent = () => {
   return (
     <div
       ref={container}
-      className="h-full w-full overflow-hidden border-x-2 xl:border-x-4 rounded-lg"
+      className="h-full w-full overflow-hidden border-x-2 rounded-lg"
       onPointerMove={onPointerMove}
     >
       <motion.div
         drag="x"
         dragConstraints={container}
         dragElastic={0}
+        dragMomentum={false}
+        onDrag={(e, info) => {
+          console.log(e);
+          // let target = e.target as HTMLImageElement
+          // if(target.x )
+        }}
         dragTransition={{ timeConstant: 200, power: 0.2 }}
         animate={{ x: panX }}
         transition={{ ease: "easeOut", duration: 0.5 }}
