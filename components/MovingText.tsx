@@ -17,10 +17,7 @@ const MovingText = () => {
   }, [md]);
 
   return (
-    <h1
-      className={`${customClassName} text-xl md:text-2xl md:leading-6 lg:text-3xl xl:text-4xl xl:leading-8`}
-      style={customStyle}
-    >
+    <h1 className={`${customClassName} moving-text`} style={customStyle}>
       George's Portfolio
     </h1>
   );
