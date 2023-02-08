@@ -63,6 +63,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 drag="x"
                 dragConstraints={container}
                 dragElastic={0}
+                dragMomentum={false}
                 dragTransition={{ timeConstant: 200, power: 0.2 }}
                 dragControls={controls}
                 onAnimationComplete={() => {
@@ -77,7 +78,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 className="flex space-x-1 w-fit h-full"
               >
                 {sides.map((image) => (
-                  <div className="md:w-[230px] lg:w-[290px] h-full border rounded-lg cursor-pointer">
+                  <div className="md:w-[135px] lg:w-[190px] xl:w-[290px] h-full border rounded-lg cursor-pointer">
                     <GalleryThumb image={image} viewImage={viewImage} />
                   </div>
                 ))}
