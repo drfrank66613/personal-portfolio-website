@@ -18,6 +18,9 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
   const mainEl = useRef<HTMLDivElement>(null);
   const [panX, setPanX] = useState<number>(0);
   const [isDurationZero, setIsDurationZero] = useState<boolean>(false);
+  const [isMomentumOn, setIsMomentumOn] = useState<boolean>(true);
+  const [leftConstraint, setLeftConstraint] = useState<number>(2); // still need to figure out how to get the dynamic value
+  const [rightConstraint, setRightConstraint] = useState<number>(0);
   const controls = useDragControls();
   const md = useMediaQuery({ minWidth: 768 });
 
@@ -34,6 +37,34 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
         content.current?.offsetWidth! - container.current?.offsetWidth!;
 
       setPanX(maxX * xDecimal * -1);
+    }
+  };
+
+  const toggleMomentum = (e: PointerEvent) => {
+    if (e.pointerType === "touch") {
+      const x = Number(
+        content.current?.style.transform
+          .split(" ")[0]
+          .replace(/[^0-9\.]+/g, "")!
+      );
+
+      console.log(x);
+
+      if (x > rightConstraint) {
+        setRightConstraint(x);
+      }
+
+      if (x === leftConstraint) {
+        setIsMomentumOn(false);
+        return;
+      }
+
+      if (x === rightConstraint) {
+        setIsMomentumOn(false);
+        return;
+      }
+
+      setIsMomentumOn(true);
     }
   };
 
@@ -63,7 +94,8 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 drag="x"
                 dragConstraints={container}
                 dragElastic={0}
-                dragMomentum={false}
+                dragMomentum={isMomentumOn}
+                onPointerMove={toggleMomentum}
                 dragTransition={{ timeConstant: 200, power: 0.2 }}
                 dragControls={controls}
                 onAnimationComplete={() => {
