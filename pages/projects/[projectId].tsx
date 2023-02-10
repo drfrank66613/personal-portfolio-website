@@ -28,6 +28,7 @@ const ProjectDetails: NextPageWithLayout = () => {
   const [isFullImageOpen, setIsFullImageOpen] = useState<boolean>(false);
   const scrollableContent = useRef<HTMLDivElement>(null);
   const sm = useMediaQuery({ minWidth: 640 });
+  const xl2 = useMediaQuery({ minWidth: 2560 });
 
   const currentProject = Projects.find(
     (project) => project.id === router.query.projectId
@@ -62,21 +63,21 @@ const ProjectDetails: NextPageWithLayout = () => {
   return (
     <>
       {currentProject && (
-        <div className="h-screen px-11 py-7 flex flex-col">
+        <div className="h-screen px-11 2xl:px-20 py-7 2xl:py-12 flex flex-col">
           <header>
             <Link
               href="/"
-              className="flex items-center space-x-2 cursor-pointer"
+              className="flex items-center space-x-2 2xl:space-x-3 cursor-pointer"
             >
-              <RiHome2Line size={20} />
-              <h2>Back To Main</h2>
+              <RiHome2Line size={xl2 ? 40 : 20} />
+              <h2 className="pt-[2px] 2xl:pt-[2px]">Back To Main</h2>
             </Link>
           </header>
 
-          <main className="h-[90%] md:flex md:space-x-10">
-            <section className="md:w-[60%] sm:h-[50%] md:h-full h-[60%] flex items-center">
+          <main className="h-[90%] md:flex md:space-x-10 2xl:space-x-16">
+            <section className="h-[60%] sm:h-[50%] md:w-[60%] md:h-full flex items-center">
               <div
-                className="content-border max-h-[75%] overflow-y-auto overflow-x-hidden pr-3"
+                className="content-border max-h-[75%] overflow-y-auto overflow-x-hidden pr-3 2xl:pr-6"
                 ref={scrollableContent}
               >
                 <h1>{currentProject.name}</h1>
@@ -111,10 +112,14 @@ const ProjectDetails: NextPageWithLayout = () => {
             {prevProject ? (
               <Link
                 href={`/projects/${prevProject.id}`}
-                className="flex items-center space-x-2 cursor-pointer"
+                className="flex items-center space-x-2 2xl:space-x-3 cursor-pointer"
               >
-                <BiLeftArrow size={20} />
-                {sm ? <h2>{prevProject.name}</h2> : <h2>Prev</h2>}
+                <BiLeftArrow size={xl2 ? 40 : 20} />
+                {sm ? (
+                  <h2 className="pt-[1px]">{prevProject.name}</h2>
+                ) : (
+                  <h2 className="pt-[1px]">Prev</h2>
+                )}
               </Link>
             ) : (
               <div></div>
@@ -123,10 +128,14 @@ const ProjectDetails: NextPageWithLayout = () => {
             {nextProject ? (
               <Link
                 href={`/projects/${nextProject.id}`}
-                className="flex items-center space-x-2 cursor-pointer"
+                className="flex items-center space-x-2 2xl:space-x-3 cursor-pointer"
               >
-                {sm ? <h2>{nextProject.name}</h2> : <h2>Next</h2>}
-                <BiRightArrow size={20} />
+                {sm ? (
+                  <h2 className="pt-[1px]">{nextProject.name}</h2>
+                ) : (
+                  <h2 className="pt-[1px]">Next</h2>
+                )}
+                <BiRightArrow size={xl2 ? 40 : 20} />
               </Link>
             ) : (
               <div></div>
