@@ -39,7 +39,7 @@ const SkillsContent = () => {
     <>
       <motion.div
         variants={contentVariants}
-        className="flex flex-col space-y-3 md:space-y-4 lg:space-y-4 xl:space-y-6"
+        className="flex flex-col space-y-3 md:space-y-4 lg:space-y-4 xl:space-y-6 2xl:space-y-12"
       >
         {skills.map(({ category, list }) => (
           <div key={category}>
