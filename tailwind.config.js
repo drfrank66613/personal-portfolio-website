@@ -11,6 +11,9 @@ module.exports = {
         aviano: ["aviano-royale", "serif"],
         krete: ["krete", "serif"],
       },
+      screens: {
+        "2xl": "2560px",
+      },
     },
   },
   plugins: [],
