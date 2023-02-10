@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import type { ImageGallery } from "../data/projects";
 import ReactPlayer from "react-player/youtube";
+import { useMediaQuery } from "react-responsive";
 
 type FullImageGalleryProps = {
   isOpen: boolean;
@@ -18,6 +19,7 @@ const FullImageGallery = ({
   closeImage,
 }: FullImageGalleryProps) => {
   const [currentImage, setCurrentImage] = useState<ImageGallery | null>(null);
+  const xl2 = useMediaQuery({ minWidth: 2560 });
 
   const nextImageIdx =
     gallery.findIndex((image) => image.id === currentImage?.id) + 1;
@@ -41,14 +43,14 @@ const FullImageGallery = ({
         <div className="inset-0 fixed h-screen w-screen z-10 bg-neutral-900 bg-opacity-95 flex justify-evenly items-center">
           {prevImage ? (
             <button
-              className="bg-black p-2 rounded-lg"
+              className="bg-black p-2 2xl:p-3 rounded-lg"
               onClick={() => changeImage(prevImage)}
             >
-              <AiOutlineLeft size={20} />
+              <AiOutlineLeft size={xl2 ? 40 : 20} />
             </button>
           ) : (
             <div className="invisible p-2">
-              <AiOutlineLeft size={20} />
+              <AiOutlineLeft size={xl2 ? 40 : 20} />
             </div>
           )}
 
@@ -77,14 +79,14 @@ const FullImageGallery = ({
 
           {nextImage ? (
             <button
-              className="bg-black p-2 rounded-lg"
+              className="bg-black p-2 2xl:p-3 rounded-lg"
               onClick={() => changeImage(nextImage)}
             >
-              <AiOutlineRight size={20} />
+              <AiOutlineRight size={xl2 ? 40 : 20} />
             </button>
           ) : (
             <div className="invisible p-2">
-              <AiOutlineRight size={20} />
+              <AiOutlineRight size={xl2 ? 40 : 20} />
             </div>
           )}
 
@@ -92,7 +94,7 @@ const FullImageGallery = ({
             onClick={closeImage}
             className="absolute top-[3%] right-[1.5%] cursor-pointer"
           >
-            <AiOutlineClose size={20} />
+            <AiOutlineClose size={xl2 ? 40 : 20} />
           </button>
         </div>
       )}
