@@ -8,8 +8,7 @@ const ProjectsContent = () => {
   const content = useRef<HTMLDivElement>(null);
   const [panX, setPanX] = useState<number>(0);
   const [isMomentumOn, setIsMomentumOn] = useState<boolean>(true);
-  const [leftConstraint, setLeftConstraint] = useState<number>(2); // still need to figure out how to get the dynamic value
-  const [rightConstraint, setRightConstraint] = useState<number>(0);
+  const [constraint, setConstraint] = useState<number>(0);
 
   const onPointerMove = (e: PointerEvent) => {
     if (e.pointerType === "mouse") {
@@ -32,16 +31,9 @@ const ProjectsContent = () => {
           .replace(/[^0-9\.]+/g, "")!
       );
 
-      if (x > rightConstraint) {
-        setRightConstraint(x);
-      }
+      setConstraint(x);
 
-      if (x === leftConstraint) {
-        setIsMomentumOn(false);
-        return;
-      }
-
-      if (x === rightConstraint) {
+      if (x === constraint) {
         setIsMomentumOn(false);
         return;
       }
@@ -53,7 +45,7 @@ const ProjectsContent = () => {
   return (
     <div
       ref={container}
-      className="h-full w-full overflow-hidden border-x-2 rounded-lg"
+      className="h-full w-full overflow-hidden border-x-2 2xl:border-x-4 rounded-lg 2xl:rounded-xl"
       onPointerMove={onPointerMove}
     >
       <motion.div
@@ -65,7 +57,7 @@ const ProjectsContent = () => {
         dragTransition={{ timeConstant: 200, power: 0.2 }}
         animate={{ x: panX }}
         transition={{ ease: "easeOut", duration: 0.5 }}
-        className="flex h-full space-x-2 w-fit text-black"
+        className="flex h-full space-x-2 2xl:space-x-4 w-fit text-black"
         ref={content}
       >
         {Projects.map(({ id, name }, index) => (
