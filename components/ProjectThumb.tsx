@@ -21,7 +21,7 @@ const ProjectThumb = ({ src, alt, id }: ProjectThumbsProps) => {
       href={`/projects/${id}`}
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
-      className="relative h-full w-[350px] lg:w-[450px] xl:w-[550px] border rounded-lg cursor-pointer"
+      className="relative h-full w-[350px] lg:w-[450px] xl:w-[550px] 2xl:w-[1000px] border 2xl:border-2 rounded-lg 2xl:rounded-xl cursor-pointer"
     >
       {isActive && (
         <div className="absolute bg-neutral-900 rounded-lg bg-opacity-90 flex justify-center items-center h-full w-full z-10">
