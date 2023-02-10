@@ -5,28 +5,28 @@
 
 @layer base {
   h1 {
-    @apply font-aviano text-lg sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-thin;
+    @apply font-aviano text-lg sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-7xl font-thin;
   }
   h2 {
-    @apply font-aviano text-sm sm:text-sm md:text-base md:leading-none lg:text-base lg:leading-none xl:text-xl font-thin;
+    @apply font-aviano text-sm sm:text-sm md:text-base md:leading-none lg:text-base lg:leading-none xl:text-xl 2xl:text-4xl 2xl:leading-normal font-thin;
   }
   h3,p,ul,input,textarea {
     @apply font-krete font-normal text-white text-opacity-90 tracking-widest;
   }
   h3 {
-    @apply text-sm leading-loose xl:text-xl xl:leading-loose underline underline-offset-4;
+    @apply text-sm leading-loose xl:text-xl xl:leading-loose 2xl:text-3xl 2xl:leading-loose underline underline-offset-4;
   }
   p {
-    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-xl xl:leading-loose text-justify;
+    @apply text-xs leading-loose sm:text-sm sm:leading-loose md:text-base md:leading-loose lg:text-base lg:leading-loose xl:text-xl xl:leading-loose 2xl:text-4xl 2xl:leading-loose text-justify;
   }
   ul {
-    @apply list-disc list-outside pl-4 text-sm leading-loose xl:text-xl xl:leading-loose text-justify;
+    @apply list-disc list-outside pl-4 text-sm leading-loose xl:text-xl xl:leading-loose 2xl:text-3xl 2xl:leading-loose text-justify;
   }
   input, textarea {
-    @apply text-xs md:text-xs lg:text-xs xl:text-base font-thin text-opacity-90 px-1 lg:px-1 xl:px-2 h-7 md:h-6 lg:h-6 xl:h-9 bg-transparent border rounded-sm outline-none
+    @apply text-xs md:text-xs lg:text-xs xl:text-base 2xl:text-3xl font-thin text-opacity-90 px-1 lg:px-1 xl:px-2 2xl:px-3 h-7 md:h-6 lg:h-6 xl:h-9 2xl:h-16 bg-transparent border 2xl:border-2 rounded-sm 2xl:rounded-md outline-none
   }
   textarea {
-    @apply pt-1 h-24 resize-none
+    @apply pt-1 2xl:pt-3 h-24 2xl:h-48 resize-none
   }
   input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     @apply text-neutral-500
@@ -50,19 +50,19 @@
 
 @layer components {
   .skills-list {
-    @apply font-krete text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl font-normal text-white text-opacity-90 tracking-widest;
+    @apply font-krete text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-4xl font-normal text-white text-opacity-90 tracking-widest;
   }
   .more-less-text {
-    @apply text-sm xl:text-lg text-neutral-300 tracking-widest cursor-pointer
+    @apply text-sm xl:text-lg 2xl:text-3xl text-neutral-300 tracking-widest cursor-pointer
   }
   .project-note {
-    @apply text-xs leading-relaxed xl:text-base xl:leading-relaxed
+    @apply text-xs leading-relaxed xl:text-base xl:leading-relaxed 2xl:text-2xl 2xl:leading-relaxed
   }
   .project-skills-list {
-    @apply font-krete text-xs xl:text-lg xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
+    @apply font-krete text-xs xl:text-lg 2xl:text-3xl xl:leading-loose 2xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
   }
   .moving-text {
-    @apply text-xl tracking-wider md:text-xl md:leading-6 lg:text-2xl lg:leading-6 xl:text-3xl xl:leading-6
+    @apply text-xl tracking-wider md:text-xl md:leading-6 lg:text-2xl lg:leading-6 xl:text-3xl xl:leading-6 2xl:text-6xl 2xl:leading-none
   }
 }
 
@@ -84,7 +84,7 @@ a {
 }
 
 .content-border::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.3rem;
 }
 
 .content-border::-webkit-scrollbar-track {
@@ -100,11 +100,11 @@ a {
   border-bottom-right-radius: 0.5rem;
 }
 
-@media screen and (min-width: 640px) {
+/* @media screen and (min-width: 640px) {
   .content-border::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.3rem;
   }
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   html {
