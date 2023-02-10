@@ -45,8 +45,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     currentPath === "/skills"
       ? ""
       : currentPath === "/contact"
-      ? "rounded-tr-none"
-      : "rounded-tl-none";
+      ? "rounded-tr-none 2xl:rounded-tr-none"
+      : "rounded-tl-none 2xl:rounded-tl-none";
   const [selected, setSelected] = useState(initSelected);
 
   return (
@@ -55,9 +55,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <MovingText />
       </aside>
 
-      <main className="h-full flex flex-col px-3 md:px-11 pt-16 pb-6 md:py-7 ">
-        <div className="flex h-fit lg:h-[50%] min-h-[40%] max-h-[50%] lg:space-x-5">
-          <aside className="relative lg:h-[109%] xl:h-[108%] lg:min-w-[200px] xl:min-w-[250px] hidden lg:block border rounded-lg">
+      <main className="h-full flex flex-col px-3 md:px-11 2xl:px-20 pt-16 pb-6 md:py-7 ">
+        <div className="flex h-fit lg:h-[50%] min-h-[40%] max-h-[50%] lg:space-x-5 xl:space-x-6">
+          <aside className="relative lg:h-[109%] xl:h-[108%] 2xl:h-[107%] lg:min-w-[200px] xl:min-w-[250px] 2xl:min-w-[450px] hidden lg:block border 2xl:border-2 rounded-lg 2xl:rounded-xl">
             <Logo />
           </aside>
 
@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 <Link
                   href={`/${link}`}
                   key={index}
-                  className="px-3 py-4 sm:px-4 sm:py-4 relative cursor-pointer"
+                  className="px-3 py-4 sm:px-4 sm:py-4 2xl:px-8 2xl:py-9 relative cursor-pointer"
                   onClick={() => setSelected(link)}
                 >
                   <h1 className="capitalize">{link}</h1>
@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                         ease: "easeOut",
                       }}
                       layoutId="border"
-                      className="absolute inset-0 border border-b-0 rounded-t-lg -z-10"
+                      className="absolute inset-0 border 2xl:border-2 border-b-0 2xl:border-b-0 rounded-t-lg 2xl:rounded-t-xl -z-10"
                     />
                   ) : null}
                 </Link>
@@ -86,14 +86,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             </nav>
             <AnimatePresence mode="wait">
               <motion.article
-                className={`content-border border ${borderTopStyle} rounded-lg overflow-auto`}
+                className={`content-border border 2xl:border-2 ${borderTopStyle} rounded-lg 2xl:rounded-xl overflow-auto`}
                 key={currentPath}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
               >
-                <div className="px-3 sm:px-5 py-3 sm:py-4">
+                <div className="px-3 sm:px-5 2xl:px-9 py-3 sm:py-4 2xl:py-8">
                   <Component {...pageProps} />
                 </div>
               </motion.article>
