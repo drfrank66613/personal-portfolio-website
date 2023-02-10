@@ -10,6 +10,7 @@ import { SyntheticEvent, useRef, useState } from "react";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 import toast, { Toaster } from "react-hot-toast";
+import { useMediaQuery } from "react-responsive";
 
 type FormValues = {
   name: string;
@@ -22,6 +23,7 @@ const ContactContent = () => {
 
   const [isBtnHovered, setIsBtnHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const xl2 = useMediaQuery({ minWidth: 2560 });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setIsLoading(true);
@@ -63,10 +65,10 @@ const ContactContent = () => {
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
         variants={contentVariants}
-        className="h-full flex space-x-3 relative py-4"
+        className="h-full flex space-x-3 2xl:space-x-5 relative py-4"
       >
         {/* w-[90%] md:w-[86%] lg:w-[87%] xl:w-[90%] */}
-        <div className="grow flex flex-col space-y-3">
+        <div className="grow flex flex-col space-y-3 2xl:space-y-5">
           <input
             {...register("name")}
             required
@@ -97,7 +99,7 @@ const ContactContent = () => {
 
         <button
           disabled={isLoading ? true : false}
-          className={`border rounded-sm min-w-[20%] sm:min-w-[10%] flex items-center justify-center ${
+          className={`border 2xl:border-2 rounded-sm min-w-[20%] sm:min-w-[10%] flex items-center justify-center ${
             isBtnHovered ? "border-neutral-500" : ""
           }`}
           type="submit"
@@ -109,12 +111,12 @@ const ContactContent = () => {
               strokeColor="white"
               strokeWidth="2"
               animationDuration="0.75"
-              width="25"
+              width={xl2 ? "50" : "25"}
               visible={true}
             />
           ) : (
             <AiOutlineSend
-              size={25}
+              size={xl2 ? 50 : 25}
               className={isBtnHovered ? "text-neutral-500" : ""}
             />
           )}
