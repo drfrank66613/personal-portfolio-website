@@ -19,8 +19,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
   const [panX, setPanX] = useState<number>(0);
   const [isDurationZero, setIsDurationZero] = useState<boolean>(false);
   const [isMomentumOn, setIsMomentumOn] = useState<boolean>(true);
-  const [leftConstraint, setLeftConstraint] = useState<number>(2); // still need to figure out how to get the dynamic value
-  const [rightConstraint, setRightConstraint] = useState<number>(0);
+  const [constraint, setConstraint] = useState<number>(0);
   const controls = useDragControls();
   const md = useMediaQuery({ minWidth: 768 });
 
@@ -48,18 +47,9 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
           .replace(/[^0-9\.]+/g, "")!
       );
 
-      console.log(x);
+      setConstraint(x);
 
-      if (x > rightConstraint) {
-        setRightConstraint(x);
-      }
-
-      if (x === leftConstraint) {
-        setIsMomentumOn(false);
-        return;
-      }
-
-      if (x === rightConstraint) {
+      if (x === constraint) {
         setIsMomentumOn(false);
         return;
       }
@@ -78,10 +68,10 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
     <>
       {md ? (
         main && (
-          <div className="flex flex-col h-full space-y-1">
+          <div className="flex flex-col h-full space-y-1 2xl:space-y-2">
             <div
               ref={mainEl}
-              className="h-[65%] border rounded-lg cursor-pointer"
+              className="h-[65%] border 2xl:border-2 rounded-lg cursor-pointer"
             >
               <GalleryThumb image={main} viewImage={viewImage} />
             </div>
@@ -94,10 +84,10 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 drag="x"
                 dragConstraints={container}
                 dragElastic={0}
-                dragMomentum={isMomentumOn}
-                onPointerMove={toggleMomentum}
                 dragTransition={{ timeConstant: 200, power: 0.2 }}
                 dragControls={controls}
+                dragMomentum={isMomentumOn}
+                onPointerMove={toggleMomentum}
                 onAnimationComplete={() => {
                   setIsDurationZero(false);
                 }}
@@ -107,10 +97,10 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                   duration: isDurationZero ? 0 : 0.5,
                 }}
                 ref={content}
-                className="flex space-x-1 w-fit h-full"
+                className="flex space-x-1 2xl:space-x-2 w-fit h-full"
               >
                 {sides.map((image) => (
-                  <div className="md:w-[135px] lg:w-[190px] xl:w-[290px] h-full border rounded-lg cursor-pointer">
+                  <div className="md:w-[135px] lg:w-[190px] xl:w-[290px] 2xl:w-[550px] h-full border 2xl:border-2 rounded-lg cursor-pointer">
                     <GalleryThumb image={image} viewImage={viewImage} />
                   </div>
                 ))}
