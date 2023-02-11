@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { ImageGallery } from "../data/projects";
 import Image from "next/image";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 type SlideshowProps = {
   gallery: ImageGallery[];
@@ -10,6 +11,7 @@ type SlideshowProps = {
 };
 
 const Slideshow = ({ gallery, viewImage }: SlideshowProps) => {
+  const router = useRouter();
   const [index, setIndex] = useState<number>(0);
   const [isPrevActive, setIsPrevActive] = useState<boolean>(true);
   const [isNextActive, setIsNextActive] = useState<boolean>(true);
@@ -36,6 +38,10 @@ const Slideshow = ({ gallery, viewImage }: SlideshowProps) => {
     }
   }, [index]);
 
+  useEffect(() => {
+    setIndex(0);
+  }, [router.query.projectId]);
+
   return (
     <div className="h-full flex items-center space-x-1">
       {isPrevActive ? (
@@ -50,7 +56,7 @@ const Slideshow = ({ gallery, viewImage }: SlideshowProps) => {
           <AiOutlineLeft size={15} />
         </button>
       )}
-      {gallery[index].type === "video" && (
+      {gallery[index]?.type === "video" && (
         <div className="relative h-full w-full border-2 rounded-lg p-[2px]">
           <ReactPlayer
             url={gallery[index].src}
@@ -60,7 +66,7 @@ const Slideshow = ({ gallery, viewImage }: SlideshowProps) => {
           />
         </div>
       )}
-      {gallery[index].type === "image" && (
+      {gallery[index]?.type === "image" && (
         <div
           className="relative h-full w-full border-2 rounded-lg overflow-hidden"
           onClick={() => viewImage(gallery[index])}
