@@ -6,12 +6,14 @@ import {
   useRef,
   useState,
   WheelEvent,
+  PointerEvent,
 } from "react";
 import type { Project } from "../data/projects";
 import { useMediaQuery } from "react-responsive";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 type SkillsLabelProps = {
   project: Project;
@@ -22,131 +24,102 @@ const SkillsLabel = ({ project, scrollableContent }: SkillsLabelProps) => {
   const router = useRouter();
   const container = useRef<HTMLDivElement>(null);
   const scrollableLabel = useRef<HTMLDivElement>(null);
-  const [isLeftArrowHidden, setIsLeftArrowHidden] = useState<boolean>(true);
-  const [isRightArrowHidden, setIsRightArrowHidden] = useState<boolean>(true);
-
+  const [isLeftArrowOpen, setIsLeftArrowOpen] = useState<boolean>(false);
+  const [isRightArrowOpen, setIsRightArrowOpen] = useState<boolean>(false);
   const md = useMediaQuery({ minWidth: 768 });
 
-  // const preventDefault = useMemo(() => (e: any) => e.preventDefault(), []);
+  const scroll = (e: PointerEvent) => {
+    if (e.pointerType === "touch") {
+      if (container.current) {
+        container.current.scrollLeft -= e.movementX;
 
-  // const disableContentScrollable = () => {
-  //   scrollableContent.current?.addEventListener("wheel", preventDefault, {
-  //     passive: false,
-  //   });
-  // };
+        const containerScrollWidth = container.current.scrollWidth;
+        const containerOffsetWidth = container.current.offsetWidth;
+        const roundContainerScrollLeft = Number(
+          container.current.scrollLeft.toFixed()
+        );
 
-  // const enableContentScrollable = () => {
-  //   scrollableContent.current?.removeEventListener(
-  //     "wheel",
-  //     preventDefault,
-  //     false
-  //   );
-  // };
+        if (roundContainerScrollLeft === 0) {
+          setIsLeftArrowOpen(false);
+        } else {
+          setIsLeftArrowOpen(true);
+        }
 
-  // const onLabelWheel = (e: WheelEvent<HTMLDivElement>) => {
-  //   if (scrollableLabel.current) {
-  //     scrollableLabel.current.scrollLeft += e.deltaY;
+        if (
+          roundContainerScrollLeft + 1 >=
+          containerScrollWidth - containerOffsetWidth
+        ) {
+          setIsRightArrowOpen(false);
+        } else {
+          setIsRightArrowOpen(true);
+        }
+      }
+    }
+  };
 
-  //     const offsetLeft = scrollableLabel.current.offsetLeft;
-  //     const offsetWidth = scrollableLabel.current.offsetWidth;
-  //     const scrollWidth = scrollableLabel.current.scrollWidth;
-  //     const scrollLeft = scrollableLabel.current.scrollLeft;
+  useEffect(() => {
+    const containerScrollWidth = container.current?.scrollWidth;
+    const containerOffsetWidth = container.current?.offsetWidth;
 
-  //     if (offsetLeft == scrollLeft) {
-  //       setIsLeftArrowHidden(true);
-  //     } else {
-  //       setIsLeftArrowHidden(false);
-  //       setIsRightArrowHidden(false);
-  //     }
+    container.current?.scrollTo(0, 0);
+    setIsLeftArrowOpen(false);
 
-  //     if (offsetWidth + scrollLeft + 1 >= scrollWidth) {
-  //       setIsRightArrowHidden(true);
-  //     } else {
-  //       setIsRightArrowHidden(false);
-  //     }
-  //   }
-  // };
+    if (containerScrollWidth !== containerOffsetWidth) {
+      setIsRightArrowOpen(true);
+    } else {
+      setIsRightArrowOpen(false);
+    }
+  }, [router.query.projectId, container.current?.offsetWidth]);
 
-  // useEffect(() => {
-  //   // scrollableLabel.current?.scrollTo(0, 0);
+  // Re-render on browser resize
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const setWindowDimensions = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  };
 
-  //   if (
-  //     scrollableLabel.current?.offsetWidth !=
-  //     scrollableLabel.current?.scrollWidth
-  //   ) {
-  //     setIsRightArrowHidden(false);
-  //   } else {
-  //     setIsRightArrowHidden(true);
-  //   }
-
-  //   if (
-  //     scrollableLabel.current?.offsetLeft != scrollableLabel.current?.scrollLeft
-  //   ) {
-  //     setIsLeftArrowHidden(false);
-  //   } else {
-  //     setIsLeftArrowHidden(true);
-  //   }
-
-  //   if (scrollableLabel.current?.scrollLeft != 0) {
-  //     scrollableLabel.current?.scrollTo(0, 0);
-  //   }
-
-  //   console.log(scrollableLabel.current?.scrollLeft);
-  //   console.log(scrollableLabel.current?.offsetLeft);
-  // }, [
-  //   router.query.projectId,
-  //   scrollableLabel.current?.scrollLeft,
-  //   scrollableLabel.current?.offsetWidth,
-  // ]);
-
-  // // Re-render on browser resize
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  // const setWindowDimensions = () => {
-  //   setWindowWidth(window.innerWidth);
-  //   setWindowHeight(window.innerHeight);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", setWindowDimensions);
-  //   return () => {
-  //     window.removeEventListener("resize", setWindowDimensions);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("resize", setWindowDimensions);
+    return () => {
+      window.removeEventListener("resize", setWindowDimensions);
+    };
+  }, []);
 
   return (
-    <div className="relative overflow-x-hidden" ref={container}>
-      {md || isLeftArrowHidden || (
-        <div className="absolute inset-y-0 left-0 bg-[#0f0f0f] shadow-[10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
-          <BiChevronLeft />
-        </div>
-      )}
-      <motion.div
-        className="whitespace-nowrap w-fit md:w-full md:whitespace-normal"
-        ref={scrollableLabel}
-        drag="x"
-        dragConstraints={container}
-        dragElastic={0}
-        dragMomentum={false}
-        // onWheel={onLabelWheel}
-        // onMouseEnter={disableContentScrollable}
-        // onMouseLeave={enableContentScrollable}
+    <div className="relative">
+      {md ||
+        (isLeftArrowOpen && (
+          <div className="absolute inset-y-0 left-0 bg-[#0f0f0f] shadow-[10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
+            <BiChevronLeft />
+          </div>
+        ))}
+      <div
+        className="w-full overflow-x-hidden touch-none"
+        ref={container}
+        onPointerMove={scroll}
       >
-        {project.skills.map((skill, index, skills) => {
-          const divider = index + 1 === skills.length ? "" : " | ";
+        <motion.div
+          className="whitespace-nowrap w-fit md:w-full md:whitespace-normal"
+          ref={scrollableLabel}
+        >
+          {project.skills.map((skill, index, skills) => {
+            const divider = index + 1 === skills.length ? "" : " | ";
 
-          return (
-            <label key={skill} className="project-skills-list">
-              {skill + divider}
-            </label>
-          );
-        })}
-      </motion.div>
-      {md || isRightArrowHidden || (
-        <div className="absolute inset-y-0 right-0 bg-[#0f0f0f] shadow-[-10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
-          <BiChevronRight />
-        </div>
-      )}
+            return (
+              <label key={skill} className="project-skills-list">
+                {skill + divider}
+              </label>
+            );
+          })}
+        </motion.div>
+      </div>
+      {md ||
+        (isRightArrowOpen && (
+          <div className="absolute inset-y-0 right-0 bg-[#0f0f0f] shadow-[-10px_0_10px] shadow-[#0f0f0f] w-5 flex justify-center items-center">
+            <BiChevronRight />
+          </div>
+        ))}
     </div>
   );
 };
