@@ -10,6 +10,10 @@ export type ImageGallery = {
 export type Project = {
   id: string;
   name: string;
+  link?: {
+    code?: string;
+    site?: string;
+  };
   skills: string[];
   gallery: ImageGallery[];
   content: {
@@ -22,6 +26,9 @@ export const Projects: Project[] = [
   {
     id: "hotel-management-system",
     name: "Hotel Management System",
+    link: {
+      code: "https://github.com/drfrank66613/personal-portfolio-website",
+    },
     skills: [
       "HTML",
       "CSS",
@@ -150,6 +157,9 @@ export const Projects: Project[] = [
   {
     id: "the-generations-site",
     name: "The Generations Site",
+    link: {
+      site: "https://thegenerationsmy.com/",
+    },
     skills: ["HTML", "CSS", "JavaScript", "React.js", "TailwindCSS"],
     gallery: [
       {
