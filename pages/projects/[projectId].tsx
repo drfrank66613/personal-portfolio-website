@@ -7,8 +7,11 @@ import {
   MouseEvent,
 } from "react";
 import { NextPageWithLayout } from "../_app";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { BiLeftArrow, BiRightArrow, BiCodeAlt } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import { TfiWorld } from "react-icons/tfi";
+import { TbWorld } from "react-icons/tb";
+
 import { RiHome2Line } from "react-icons/ri";
 import { Projects } from "../../data/projects";
 import { useRouter } from "next/router";
@@ -74,9 +77,49 @@ const ProjectDetails: NextPageWithLayout = () => {
             </Link>
           </header>
 
-          <main className="h-[90%] md:flex md:space-x-10 2xl:space-x-16">
-            <section className="h-[60%] sm:h-[50%] md:w-[60%] md:h-full flex items-center">
-              <div
+          <main className="h-[90%] md:flex items-center md:space-x-10 2xl:space-x-16">
+            <section className="h-[60%] sm:h-[50%] md:h-full md:w-[60%] flex items-center">
+              <div className="max-h-[75%] h-fit w-full flex flex-col space-y-2">
+                <div className="pr-3 md:pr-4 2xl:pr-8">
+                  <h1>{currentProject.name}</h1>
+                  <SkillsLabel
+                    project={currentProject}
+                    scrollableContent={scrollableContent}
+                  />
+                </div>
+                <div className="content-border overflow-y-auto pr-3 md:pr-4 2xl:pr-8">
+                  {currentProject.content.initial}
+                  {isContentExpanded ? currentProject.content.full : null}
+                </div>
+                <div className="flex justify-between items-center">
+                  <button onClick={toggleExpanded} className="more-less-text">
+                    {isContentExpanded ? "Show less" : "...Read more"}
+                  </button>
+                  <div>
+                    {currentProject.link?.code && (
+                      <div className="flex items-center space-x-2 project-link">
+                        <BiCodeAlt size={30} />
+                        <Link href={currentProject.link.code} target="_blank">
+                          View Code
+                        </Link>
+                      </div>
+                    )}
+                    {currentProject.link?.site && (
+                      <div className="flex items-center space-x-2 project-link">
+                        <TbWorld strokeWidth={1} size={30} />
+                        <Link
+                          className="pt-1"
+                          href={currentProject.link.site}
+                          target="_blank"
+                        >
+                          View Site
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              {/* <div
                 className="content-border max-h-[75%] overflow-y-auto overflow-x-hidden pr-3 2xl:pr-6"
                 ref={scrollableContent}
               >
@@ -92,7 +135,8 @@ const ProjectDetails: NextPageWithLayout = () => {
                     {isContentExpanded ? "Show less" : "...Read more"}
                   </button>
                 </div>
-              </div>
+                <div>View Link</div>
+              </div> */}
             </section>
             <section className="md:w-[40%] h-[40%] sm:h-[50%] md:h-full md:py-32 lg:py-20">
               <GalleryLayout
