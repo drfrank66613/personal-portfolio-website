@@ -100,7 +100,7 @@ const GalleryLayout = ({ gallery, viewImage }: GalleryLayoutProps) => {
                 className="flex space-x-1 2xl:space-x-2 w-fit h-full"
               >
                 {sides.map((image) => (
-                  <div className="md:w-[135px] lg:w-[190px] xl:w-[290px] 2xl:w-[550px] h-full border 2xl:border-2 rounded-lg cursor-pointer">
+                  <div className="md:w-[180px] lg:w-[240px] xl:w-[290px] min-[1580px]:w-[500px] 2xl:w-[550px] h-full border 2xl:border-2 rounded-lg cursor-pointer">
                     <GalleryThumb image={image} viewImage={viewImage} />
                   </div>
                 ))}
