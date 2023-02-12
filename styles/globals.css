@@ -61,6 +61,9 @@
   .project-skills-list {
     @apply font-krete text-xs xl:text-lg 2xl:text-3xl xl:leading-loose 2xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
   }
+  .project-link {
+    @apply font-aviano tracking-widest
+  }
   .moving-text {
     @apply text-xl tracking-wider md:text-xl md:leading-6 lg:text-2xl lg:leading-6 xl:text-3xl xl:leading-6 2xl:text-6xl 2xl:leading-none
   }
