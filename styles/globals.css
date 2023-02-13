@@ -53,7 +53,7 @@
     @apply font-krete text-xs sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-4xl font-normal text-white text-opacity-90 tracking-widest;
   }
   .more-less-text {
-    @apply text-sm xl:text-lg 2xl:text-3xl text-neutral-300 tracking-widest cursor-pointer
+    @apply text-xs xl:text-lg 2xl:text-3xl text-neutral-300 tracking-widest cursor-pointer
   }
   .project-note {
     @apply text-xs leading-relaxed xl:text-base xl:leading-relaxed 2xl:text-2xl 2xl:leading-relaxed
@@ -62,7 +62,7 @@
     @apply font-krete text-xs xl:text-lg 2xl:text-3xl xl:leading-loose 2xl:leading-loose text-neutral-400 font-normal text-opacity-90 tracking-widest;
   }
   .project-link {
-    @apply font-aviano tracking-widest
+    @apply font-aviano text-xs xl:text-lg 2xl:text-3xl tracking-widest
   }
   .moving-text {
     @apply text-xl tracking-wider md:text-xl md:leading-6 lg:text-2xl lg:leading-6 xl:text-3xl xl:leading-6 2xl:text-6xl 2xl:leading-none
