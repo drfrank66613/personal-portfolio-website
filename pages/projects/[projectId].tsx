@@ -31,6 +31,7 @@ const ProjectDetails: NextPageWithLayout = () => {
   const [isFullImageOpen, setIsFullImageOpen] = useState<boolean>(false);
   const scrollableContent = useRef<HTMLDivElement>(null);
   const sm = useMediaQuery({ minWidth: 640 });
+  const lg = useMediaQuery({ minWidth: 1024 });
   const xl2 = useMediaQuery({ minWidth: 2560 });
 
   const currentProject = Projects.find(
@@ -98,20 +99,19 @@ const ProjectDetails: NextPageWithLayout = () => {
                   <div>
                     {currentProject.link?.code && (
                       <div className="flex items-center space-x-2 project-link">
-                        <BiCodeAlt size={30} />
+                        <BiCodeAlt size={lg ? 25 : 15} />
                         <Link href={currentProject.link.code} target="_blank">
                           View Code
                         </Link>
                       </div>
                     )}
                     {currentProject.link?.site && (
-                      <div className="flex items-center space-x-2 project-link">
-                        <TbWorld strokeWidth={1} size={30} />
-                        <Link
-                          className="pt-1"
-                          href={currentProject.link.site}
-                          target="_blank"
-                        >
+                      <div className="flex items-center space-x-2 2xl:space-x-3 project-link">
+                        <TbWorld
+                          strokeWidth={1}
+                          size={xl2 ? 50 : lg ? 25 : 20}
+                        />
+                        <Link href={currentProject.link.site} target="_blank">
                           View Site
                         </Link>
                       </div>
